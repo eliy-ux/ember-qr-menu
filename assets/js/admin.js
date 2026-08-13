@@ -134,4 +134,4 @@ onAuthStateChanged(auth, async user => {
 });
 
 $("#loginModal").addEventListener("close", () => { if (!auth.currentUser) window.location.href = "index.html"; });
-$("#year").textContent = new Date().getFullYear(); $("#qrBaseUrl").value = new URL("index.html", window.location.href).href; renderOrders(); renderMenuItems(); renderServiceRequests();
+$("#year").textContent = new Date().getFullYear(); $("#qrBaseUrl").value = new URL("index.html", window.location.href).href; renderOrders(); renderMenuItems(); renderServiceRequests(); setTimeout(() => { if (!auth.currentUser && !$("#loginModal").open) $("#loginModal").showModal(); }, 1500);
