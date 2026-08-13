@@ -14,8 +14,8 @@
   <link rel="stylesheet" href="assets/css/admin.css?v=admin-responsive-41">
 </head>
 <body class="admin-body">
-  <!-- Protocol Fail-Safe -->
-  <div id="protocolWarning" style="display:none; position:fixed; inset:0; z-index:9999; background:#09090b; color:white; padding:40px; font-family:sans-serif; text-align:center; flex-direction:column; align-items:center; justify-content:center;">
+  <!-- Protocol Fail-Safe (Visible by default, hidden by script if OK) -->
+  <div id="protocolWarning" style="display:flex; position:fixed; inset:0; z-index:9999; background:#09090b; color:white; padding:40px; font-family:sans-serif; text-align:center; flex-direction:column; align-items:center; justify-content:center;">
     <div style="background:#ff6600; width:60px; height:60px; border-radius:12px; display:grid; place-items:center; margin-bottom:20px; font-size:30px;">⚠️</div>
     <h2 style="font-family:'Playfair Display', serif; font-size:24px; margin-bottom:10px;">Security Block Detected</h2>
     <p style="color:#aaa; max-width:400px; line-height:1.6; margin-bottom:24px;">You are opening this file directly (file://). Firebase security modules require a web server to run.</p>
@@ -29,9 +29,16 @@
     </div>
     <p style="margin-top:24px; font-size:13px; color:#666;">If you have deployed to Firebase, use your public URL instead.</p>
   </div>
+  <div id="loadingIndicator" style="display:none; position:fixed; inset:0; z-index:9998; background:#09090b; color:white; padding:40px; text-align:center; flex-direction:column; align-items:center; justify-content:center;">
+    <div style="width:40px; height:40px; border:3px solid rgba(255,102,0,0.3); border-top-color:#ff6600; border-radius:50%; animation:spin 1s linear infinite; margin-bottom:20px;"></div>
+    <p style="font-family:'Playfair Display', serif; font-size:20px;">Initializing Dashboard...</p>
+    <style>@keyframes spin{to{transform:rotate(360deg)}}</style>
+  </div>
   <script>
-    if (window.location.protocol === 'file:') {
-      document.getElementById('protocolWarning').style.display = 'flex';
+    // Hide warning if not file protocol, show loading instead
+    if (window.location.protocol !== 'file:') {
+      document.getElementById('protocolWarning').style.display = 'none';
+      document.getElementById('loadingIndicator').style.display = 'flex';
     }
   </script>
   <div class="admin-layout">
