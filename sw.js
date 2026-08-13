@@ -1,14 +1,14 @@
-const CACHE_NAME = "ember-shell-v41";
+const CACHE_NAME = "ember-shell-v42";
 const APP_SHELL = [
   "./",
   "./index.html",
-  "./assets/css/style.css?v=ember-glow-41",
-  "./assets/css/customer-redesign.css?v=ember-premium-41",
-  "./assets/css/animations.css?v=ember-motion-41",
-  "./assets/css/responsive.css?v=hero-responsive-41",
-  "./assets/js/app.js?v=ember-admin-menu-final-41",
-  "./assets/js/firebase.js?v=ember-auth-41",
-  "./assets/js/firestore.js?v=ember-features-41",
+  "./assets/css/style.css?v=ember-glow-42",
+  "./assets/css/customer-redesign.css?v=ember-premium-42",
+  "./assets/css/animations.css?v=ember-motion-42",
+  "./assets/css/responsive.css?v=hero-responsive-42",
+  "./assets/js/app.js?v=ember-final-42",
+  "./assets/js/firebase.js?v=ember-auth-42",
+  "./assets/js/firestore.js?v=ember-features-42",
   "./assets/js/config.js",
   "./assets/js/utils.js",
   "./manifest.webmanifest",

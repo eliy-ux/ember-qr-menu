@@ -1,8 +1,8 @@
 /* EMBER customer-side premium redesign v1 */
 :root {
-  --ember-burgundy: #ff6600;
-  --ember-burgundy-light: #ff8a3d;
-  --ember-orange-soft: var(--ember-burgundy-light);
+  --ember-orange: #ff6600;
+  --ember-orange-light: #ff8a3d;
+  --ember-orange-soft: var(--ember-orange-light);
   --ember-cream: #fff7ed;
   --ember-bg: #050505;
   --ember-surface: rgba(18, 18, 20, 0.7);
@@ -144,9 +144,9 @@ body::before {
   border: 1px solid rgba(255,102,0,.24);
   box-shadow: 0 8px 24px rgba(255,102,0,.2);
   transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
-  background: var(--ember-burgundy);
+  background: var(--ember-orange);
 }
-.cart-button:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(255,102,0,.32); background: var(--ember-burgundy-light); }
+.cart-button:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(255,102,0,.32); background: var(--ember-orange-light); }
 .cart-button b { border: 1px solid rgba(255,255,255,.18); }
 .menu-toggle {
   display: grid;
@@ -195,8 +195,8 @@ body::before {
   text-align: left;
   transition: background .18s ease, color .18s ease, transform .18s ease;
 }
-.menu-option:hover { background: rgba(255,102,0,.14); color: var(--ember-burgundy-light); transform: translateX(2px); }
-.menu-option-icon { display: grid; place-items: center; width: 26px; height: 26px; border: 1px solid rgba(255,255,255,.12); border-radius: 9px; color: var(--ember-burgundy-light); font-size: .8rem; }
+.menu-option:hover { background: rgba(255,102,0,.14); color: var(--ember-orange-light); transform: translateX(2px); }
+.menu-option-icon { display: grid; place-items: center; width: 26px; height: 26px; border: 1px solid rgba(255,255,255,.12); border-radius: 9px; color: var(--ember-orange-light); font-size: .8rem; }
 .menu-option-label { font-size: .86rem; font-weight: 700; }
 @keyframes ember-menu-in { from { opacity: 0; transform: translateY(-5px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
 
@@ -226,9 +226,9 @@ body::before {
 }
 .hero::after { content: ""; position: absolute; inset: auto 12% 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,102,0,.6), transparent); }
 .hero-content { position: relative; z-index: 1; }
-.hero .eyebrow { color: var(--ember-burgundy-light); letter-spacing: .2em; }
+.hero .eyebrow { color: var(--ember-orange-light); letter-spacing: .2em; }
 .hero h1 { font-size: clamp(3.2rem, 8vw, 6.5rem); max-width: 8ch; text-shadow: 0 8px 30px rgba(0,0,0,.5), 0 0 20px rgba(255,102,0,0.2); line-height: 1.05; }
-.hero h1 em { color: var(--ember-burgundy); }
+.hero h1 em { color: var(--ember-orange); }
 .hero-copy { color: rgba(255,247,237,.72); font-size: .98rem; max-width: 420px; }
 .hero-orbit { opacity: .78; box-shadow: 0 0 42px rgba(255,102,0,.1); }
 
@@ -240,7 +240,7 @@ body::before {
 .categories { gap: 8px; padding: 28px 0 25px; }
 .category-button { background: rgba(255,255,255,.035); border-color: rgba(255,255,255,.12); transition: background .18s ease, border-color .18s ease, transform .18s ease; }
 .category-button:hover { transform: translateY(-1px); border-color: rgba(255,102,0,.55); }
-.category-button.active { background: var(--ember-burgundy); box-shadow: 0 7px 18px rgba(255,102,0,.24); }
+.category-button.active { background: var(--ember-orange); box-shadow: 0 7px 18px rgba(255,102,0,.24); }
 .menu-grid { 
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -262,7 +262,7 @@ body::before {
 
 .food-card:hover { 
   transform: translateY(-12px) scale(1.02);
-  border-color: var(--ember-burgundy);
+  border-color: var(--ember-orange);
   box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 20px rgba(255, 102, 0, 0.2);
 }
 
@@ -325,14 +325,14 @@ body::before {
 .price { 
   font-size: 1.1rem;
   font-weight: 900;
-  color: var(--ember-burgundy-light);
+  color: var(--ember-orange-light);
   text-shadow: 0 0 10px rgba(255, 102, 0, 0.3);
 }
 
 .add-button { 
   position: relative;
   background: rgba(255, 102, 0, 0.1);
-  color: var(--ember-burgundy);
+  color: var(--ember-orange);
   border: 1.5px solid rgba(255, 102, 0, 0.4);
   width: 44px;
   height: 44px;
@@ -364,9 +364,9 @@ body::before {
 }
 
 .add-button:hover { 
-  background: var(--ember-burgundy);
+  background: var(--ember-orange);
   color: #fff;
-  border-color: var(--ember-burgundy);
+  border-color: var(--ember-orange);
   transform: scale(1.05) translateY(-2px);
   box-shadow: 0 8px 25px rgba(255, 102, 0, 0.78), 0 0 15px rgba(255, 102, 0, 0.5);
 }
@@ -470,8 +470,8 @@ body::before {
 .modal-close:hover,
 .modal-close:focus-visible {
   color: #fff;
-  background: var(--ember-burgundy);
-  border-color: var(--ember-burgundy-light);
+  background: var(--ember-orange);
+  border-color: var(--ember-orange-light);
   transform: scale(1.06);
 }
 @media (max-width: 640px) {
