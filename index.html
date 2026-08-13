@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ff6600">
+  <title>EMBER — QR Menu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css?v=ember-glow-41">
+  <link rel="stylesheet" href="assets/css/animations.css?v=ember-motion-41">
+  <link rel="stylesheet" href="assets/css/responsive.css?v=hero-responsive-41">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="assets/icons/ember.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/customer-redesign.css?v=ember-premium-41">
+</head>
+
+<body>
+  <div class="page-shell">
+    <header class="site-header container">
+      <a class="brand" href="#top" aria-label="Ember home">
+        <div class="cyber-logo">
+          <div class="logo-square">E</div>
+        </div>
+        <div class="cyber-text">
+          <span class="cyber-name">EMBER</span>
+          <span class="cyber-status"><span class="status-dot"></span> OPEN NOW</span>
+        </div>
+      </a>
+      <div class="header-actions">
+        <button class="cart-button" id="openCartButton" type="button" aria-label="Open cart">
+          <span aria-hidden="true" style="display: flex; align-items: center;"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg></span><span>Order</span><b id="cartCount">0</b>
+        </button>
+        <div class="preferences-wrap">
+          <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false"
+            aria-controls="preferencesMenu" aria-label="Open menu"><span></span><span></span><span></span></button>
+          <div class="preferences-menu" id="preferencesMenu" hidden>
+            <button class="menu-option language-toggle" id="languageToggle" type="button" aria-label="Switch language"><span class="menu-option-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg></span><span class="menu-option-label">አማ</span></button>
+            <button class="menu-option" id="installAppButton" type="button" hidden><span class="menu-option-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg></span><span class="menu-option-label">Install app</span></button>
+            <button class="menu-option" id="adminLoginButton" type="button" style="border-top: 1px solid rgba(255,255,255,0.1); margin-top: 5px; padding-top: 10px;"><span class="menu-option-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg></span><span class="menu-option-label">Admin</span></button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main id="top">
+      <!-- Hero section removed as per user request
+      <section class="hero container">
+        <p class="eyebrow">Table service, made simple</p>
+        <h1>Good food.<br><em>Right to your table.</em></h1>
+        <p class="hero-copy">Explore our kitchen favourites and place your order when you are ready.</p>
+        <div class="hero-orbit" aria-hidden="true"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span>fresh</span><span>•</span><span>bold</span></div>
+      </section>
+      -->
+
+      <section class="menu-section container" aria-labelledby="menuHeading">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Today's selection</p>
+            <h2 id="menuHeading">Find your favourite</h2>
+          </div>
+          <label class="search"><span aria-hidden="true" style="display: flex; align-items: center; color: var(--ember-muted);"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span><input id="searchInput" type="search"
+              placeholder="Search menu" aria-label="Search menu"></label>
+        </div>
+        <div class="categories" id="categoryList" aria-label="Menu categories"></div>
+        <div class="menu-grid" id="menuContainer" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer container"><span>© <span id="year">2026</span> EMBER Kitchen</span><span>Made for your
+        table</span></footer>
+  </div>
+
+  <div class="scrim" id="scrim" hidden></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Your order" aria-hidden="true">
+    <div class="drawer-header">
+      <div>
+        <p class="eyebrow">Almost there</p>
+        <h2>Your order</h2>
+      </div><button class="icon-button" id="closeCartButton" type="button" aria-label="Close cart">×</button>
+    </div>
+    <div id="cartItems" class="cart-items"></div>
+    <div class="cart-bottom">
+      <label class="field-label">Table number<input id="tableNumber" inputmode="numeric" maxlength="10"
+          placeholder="e.g. 12"></label>
+      <label class="field-label">Order notes <span>(optional)</span><textarea id="orderNotes" rows="2"
+          placeholder="Allergies, special requests…"></textarea></label>
+      <div class="totals">
+        <div class="total-row"><span>Subtotal</span><strong id="cartSubtotal">Br 0.00</strong></div>
+        <div class="grand-total"><span>Total</span><strong id="cartTotal">Br 0.00</strong></div>
+      </div>
+      <button class="secondary-button waiter-button" id="callWaiterButton" type="button"><span
+          aria-hidden="true">âœ¦</span> Call waiter</button>
+      <button class="primary-button" id="checkoutButton" type="button">
+        <span>Place order</span>
+        <span class="button-total" id="checkoutButtonTotal"></span>
+        <span aria-hidden="true">→</span>
+      </button>
+    </div>
+  </aside>
+
+  <dialog class="modal" id="itemModal">
+    <article class="item-modal-content"><button class="icon-button modal-close" type="button" data-close-modal
+        aria-label="Close">×</button>
+      <div id="itemModalBody"></div>
+    </article>
+  </dialog>
+  <dialog class="modal login-modal" id="loginModal">
+    <article><button class="icon-button modal-close" type="button" data-close-modal aria-label="Close">×</button>
+      <p class="eyebrow">Staff only</p>
+      <h2>Admin sign in</h2>
+      <p class="muted">Use a Firebase Authentication email and password.</p>
+      <form id="loginForm"><label class="field-label">Email<input id="loginEmail" type="email" autocomplete="email"
+            required></label><label class="field-label">Password<input id="loginPassword" type="password"
+            autocomplete="current-password" required></label><button class="primary-button" type="submit">Sign
+          in</button></form>
+    </article>
+  </dialog>
+
+  <dialog class="modal success-modal" id="orderSuccessModal" aria-labelledby="successTitle">
+    <article class="success-card">
+      <button class="icon-button modal-close" type="button" data-close-modal aria-label="Close confirmation">×</button>
+      <div class="success-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none">
+          <path d="m13 25 8 8 15-17" stroke="currentColor" stroke-width="4" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg></div>
+      <p class="eyebrow success-eyebrow">Order confirmed</p>
+      <h2 id="successTitle">Order successful</h2>
+      <p class="success-message">Your order has been sent to the kitchen.</p>
+      <div class="success-summary">
+        <div><span>Table</span><strong id="successTable">—</strong></div>
+        <div><span>Total</span><strong id="successTotal">Br 0.00</strong></div>
+      </div>
+      <button class="primary-button success-done" type="button" data-close-modal>Done</button>
+    </article>
+  </dialog>
+
+  <dialog class="modal" id="waiterModal" aria-labelledby="waiterTitle">
+    <article class="item-modal-content compact-modal"><button class="icon-button modal-close" type="button"
+        data-close-modal aria-label="Close">×</button>
+      <p class="eyebrow">Table service</p>
+      <h2 id="waiterTitle">Call a waiter?</h2>
+      <p class="muted">A team member will come to your table shortly.</p><label class="field-label">Table number<input
+          id="waiterTableNumber" inputmode="numeric" maxlength="10" placeholder="e.g. 12" required></label><button
+        class="primary-button" id="sendWaiterRequest" type="button">Request assistance</button>
+    </article>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="assets/js/app.js?v=ember-admin-menu-final-41"></script>
+</body>
+
+</html>

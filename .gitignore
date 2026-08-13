@@ -1,0 +1,28 @@
+# Dependencies and generated package artifacts
+node_modules/
+*.zip
+
+# Local tooling and editor metadata
+.qoder/
+.qodo/
+.vscode/
+
+# Agent/browser/debug artifacts
+verification-*.md
+verification-*.txt
+audit-*.txt
+theme-verification-*.txt
+screenshots/
+console_outputs/
+browser_html/
+page_texts/
+update_firestore_menu.js
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Local environment files
+.env
+.env.*
+!.env.example

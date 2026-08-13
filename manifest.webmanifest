@@ -1,0 +1,13 @@
+{
+  "name": "EMBER Kitchen Menu",
+  "short_name": "EMBER",
+  "description": "Scan, order, and enjoy your meal at EMBER Kitchen.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0b0b0d",
+  "theme_color": "#ff6600",
+  "orientation": "portrait",
+  "icons": [
+    { "src": "assets/icons/ember.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ff6600">
+  <title>EMBER — Admin Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css?v=ember-glow-41">
+  <link rel="stylesheet" href="assets/css/animations.css?v=ember-motion-41">
+  <link rel="stylesheet" href="assets/css/responsive.css?v=hero-responsive-41">
+  <link rel="stylesheet" href="assets/css/admin.css?v=admin-responsive-41">
+</head>
+<body class="admin-body">
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <div class="sidebar-brand-block">
+        <a class="brand admin-brand" href="index.html" aria-label="Ember home"><span class="cyber-logo" aria-hidden="true"><span class="logo-square">E</span></span><span class="cyber-text"><span class="cyber-name">EMBER</span><span class="cyber-status"><span class="status-dot"></span> OPEN NOW</span></span></a>
+        <p class="sidebar-eyebrow">Ember Kitchen</p>
+        <h2 class="sidebar-title">Staff workspace</h2>
+      </div>
+      <nav class="admin-nav">
+        <a class="admin-nav-link is-active" href="#ordersSection">
+          <span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></span>
+          <span>Orders</span>
+        </a>
+        <a class="admin-nav-link" href="#menuSection">
+          <span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M7 8h10"/><path d="M7 12h10"/><path d="M7 16h10"/></svg></span>
+          <span>Menu</span>
+        </a>
+        <a class="admin-nav-link" href="#qrSection">
+          <span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="5" height="5" x="3" y="3" rx="1"/><rect width="5" height="5" x="16" y="3" rx="1"/><rect width="5" height="5" x="3" y="16" rx="1"/><path d="M21 16h-3a2 2 0 0 0-2 2v3"/><path d="M21 21v-3"/><path d="M7 21h.01"/><path d="M12 21h.01"/><path d="M12 17h.01"/><path d="M12 12h.01"/><path d="M17 12h.01"/><path d="M21 12h.01"/><path d="M17 7h.01"/><path d="M12 7h.01"/><path d="M7 12h.01"/><path d="M7 7h.01"/><path d="M12 3h.01"/></svg></span>
+          <span>QR codes</span>
+        </a>
+        <a class="admin-nav-link" href="index.html" target="_blank">
+          <span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg></span>
+          <span>View site</span>
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="connection-status"><span class="status-indicator"></span> Firebase connected</div>
+        <button class="sidebar-logout" id="logoutButton" type="button" style="display: flex; align-items: center; gap: 8px;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" x2="9" y1="12" y2="12"/></svg> Sign out</button>
+      </div>
+    </aside>
+
+    <main class="admin-main">
+      <header class="admin-header">
+        <div>
+          <p class="eyebrow">Live operations</p>
+          <h1>Service control center</h1>
+          <p class="muted">Keep the kitchen moving, the menu current, and every table looked after.</p>
+        </div>
+        <div class="header-actions">
+          <a class="text-button" href="index.html" target="_blank">Open guest menu ↗</a>
+          <div class="status-group">
+            <span class="status-badge active"><span class="pulse"></span> LIVE</span>
+            <span class="status-badge" id="roleBadge">Admin</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="admin-stats" aria-label="Dashboard summary">
+        <div class="stat-card">
+          <div class="stat-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div class="stat-copy"><span>Pending orders</span><strong id="pendingCount">0</strong>Needs attention</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg></div>
+          <div class="stat-copy"><span>In the kitchen</span><strong id="preparingCount">0</strong>Currently preparing</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+          <div class="stat-copy"><span>Completed today</span><strong id="completedCount">0</strong>Orders served</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="2" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+          <div class="stat-copy"><span>Completed revenue</span><strong id="revenueAmount">Br 0.00</strong>From completed orders</div>
+        </div>
+      </div>
+
+      <section class="admin-section" id="ordersSection">
+        <div class="section-header">
+          <div>
+            <p class="eyebrow">Kitchen queue</p>
+            <h2>Live orders<span class="section-count" id="orderCountLabel">0 orders</span></h2>
+            <p>Prioritize the next action and keep every order moving.</p>
+          </div>
+          <div class="order-filters">
+            <button class="filter-btn active" data-filter="live" type="button">Live</button>
+            <button class="filter-btn" data-filter="completed" type="button">Completed</button>
+            <button class="filter-btn" data-filter="cancelled" type="button">Cancelled</button>
+          </div>
+        </div>
+        
+        <div class="search-bar">
+          <i>⌕</i>
+          <input id="orderSearch" type="search" placeholder="Search table or order" aria-label="Search orders">
+        </div>
+
+        <div class="live-indicator-bar">
+          <span id="orderLiveStatus">Listening for live updates</span>
+          <span class="muted">Sorted newest first</span>
+        </div>
+
+        <div class="order-grid" id="orderList">
+          <div class="empty-cart">
+            <strong>The kitchen queue is clear.</strong>
+            <span>New orders will appear here automatically.</span>
+          </div>
+        </div>
+        <div class="service-requests-panel">
+          <div class="section-header compact-section-header"><div><p class="eyebrow">Front of house</p><h3>Table requests<span class="section-count" id="serviceRequestCount">0 active</span></h3></div></div>
+          <div id="serviceRequestList" class="service-request-list"><div class="empty-cart"><strong>No table requests.</strong><span>Guests can call a waiter from the menu.</span></div></div>
+        </div>
+      </section>
+
+      <section class="admin-section" id="menuSection">
+        <div class="section-header">
+          <div>
+            <p class="eyebrow">Menu manager</p>
+            <h2>Menu items<span class="section-count" id="menuCountLabel">0 dishes</span></h2>
+            <p>Keep your guest-facing menu accurate, appetising, and easy to update.</p>
+          </div>
+          <button class="primary-button" id="addMenuItemButton" type="button">+ Add menu item</button>
+        </div>
+
+        <div class="search-bar">
+          <i>⌕</i>
+          <input id="menuSearch" type="search" placeholder="Search dishes or categories" aria-label="Search menu">
+        </div>
+        <p class="muted" style="margin-top:-16px;margin-bottom:24px;font-size:0.8rem">Changes publish to the guest menu immediately.</p>
+
+        <div class="menu-grid" id="menuItemList"></div>
+      </section>
+
+      <section class="admin-section" id="qrSection">
+        <div class="section-header">
+          <div>
+            <p class="eyebrow">Table access</p>
+            <h2>QR codes<span class="section-count">Print-ready</span></h2>
+            <p>Create a scannable link for table tents, menus, or front-of-house signage.</p>
+          </div>
+        </div>
+        
+        <div class="qr-tools">
+          <form id="qrForm">
+            <label class="field-label">Menu URL (use your public or deployed URL)
+              <input id="qrBaseUrl" type="url" placeholder="https://your-menu.com/index.html" required>
+            </label>
+            <button class="primary-button" type="submit">Generate QR code ↗</button>
+          </form>
+          <p class="muted" id="qrStatus" style="margin-top:16px;font-size:0.85rem">Your menu link is prefilled from this preview.</p>
+          <button class="text-button" id="printQrButton" type="button" style="margin-top:12px" hidden>Print QR sheet</button>
+        </div>
+
+        <div class="qr-grid" id="qrGrid"></div>
+      </section>
+
+      <footer class="admin-footer">
+        <div>© <span id="year">2026</span> EMBER Kitchen</div>
+        <div>Built for calm, fast service</div>
+      </footer>
+    </main>
+  </div>
+
+  <dialog class="modal" id="menuItemModal">
+    <article class="item-modal-content">
+      <button class="icon-button modal-close" type="button" data-close-modal aria-label="Close">×</button>
+      <h2 id="menuItemModalTitle">Add menu item</h2>
+      <form id="menuItemForm">
+        <input id="menuItemId" type="hidden">
+        <label class="field-label">Name<input id="menuItemName" type="text" placeholder="e.g. Ember Smash Burger" required></label>
+        <label class="field-label">Description<textarea id="menuItemDescription" placeholder="e.g. Double smashed beef, house sauce, pickles and fries." rows="3"></textarea></label>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+          <label class="field-label">Price (Br)<input id="menuItemPrice" type="number" step="0.01" placeholder="0.00" required></label>
+          <label class="field-label">Category<input id="menuItemCategory" type="text" list="categoryOptions" placeholder="e.g. Burgers" required></label>
+          <datalist id="categoryOptions"></datalist>
+        </div>
+        <label class="field-label">Dietary tags <span>(comma-separated: vegetarian, vegan, spicy, gluten-free)</span><input id="menuItemDietary" type="text" placeholder="e.g. vegetarian, gluten-free"></label>
+        <label class="checkbox-field"><input id="menuItemOutOfStock" type="checkbox"><span>Mark as out of stock</span></label>
+        <label class="field-label">Image URL
+          <div style="display:flex;gap:10px">
+            <input id="menuItemImage" type="url" placeholder="https://..." style="flex:1">
+            <button class="text-button" id="chooseImageButton" type="button">Choose a picture</button>
+          </div>
+          <input id="menuItemImageFile" type="file" accept="image/*" hidden>
+        </label>
+        <div class="image-picker">
+          <img id="menuItemPreview" alt="Menu item preview" hidden>
+          <button class="text-button" id="removeImageButton" type="button" style="color:#ff5050" hidden>Remove picture</button>
+        </div>
+        <button class="primary-button" type="submit" style="width:100%;margin-top:20px">Save item</button>
+      </form>
+    </article>
+  </dialog>
+
+  <dialog class="modal qr-modal" id="qrModal" aria-labelledby="qrModalTitle"><article class="qr-modal-card"><button class="icon-button modal-close" type="button" data-close-modal aria-label="Close">×</button><p class="eyebrow">Table access</p><h2 id="qrModalTitle">EMBER Menu QR</h2><div id="qrModalBody"></div><div class="qr-modal-actions"><button class="primary-button" id="modalPrintQrButton" type="button">Print QR sheet</button><button class="text-button" type="button" data-close-modal>Close</button></div></article></dialog>
+
+  <dialog class="modal login-modal" id="loginModal">
+    <article>
+      <!-- Close button removed to make login mandatory -->
+      <p class="eyebrow">Staff only</p>
+      <h2>Admin sign in</h2>
+      <p class="muted">Use a Firebase Authentication email and password.</p>
+      <form id="loginForm">
+        <label class="field-label">Email<input id="loginEmail" type="email" autocomplete="email" required></label>
+        <label class="field-label">Password<input id="loginPassword" type="password" autocomplete="current-password" required></label>
+        <button class="primary-button" type="submit" style="width:100%;margin-top:20px">Sign in</button>
+      </form>
+    </article>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="assets/js/admin.js?v=admin-features-41"></script>
+</body>
+</html>
