@@ -11,12 +11,12 @@
   <link
     href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=ember-glow-45">
-  <link rel="stylesheet" href="assets/css/animations.css?v=ember-motion-45">
-  <link rel="stylesheet" href="assets/css/responsive.css?v=hero-responsive-45">
+  <link rel="stylesheet" href="assets/css/style.css?v=ember-glow-46">
+  <link rel="stylesheet" href="assets/css/animations.css?v=ember-motion-46">
+  <link rel="stylesheet" href="assets/css/responsive.css?v=hero-responsive-46">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="assets/icons/ember.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="assets/css/customer-redesign.css?v=ember-premium-45">
+  <link rel="stylesheet" href="assets/css/customer-redesign.css?v=ember-premium-46">
 </head>
 
 <body>
@@ -64,8 +64,57 @@
       </section>
     </main>
 
-    <footer class="site-footer container"><span>© <span id="year">2026</span> EMBER Kitchen</span><span>Made for your
-        table</span></footer>
+    <footer class="site-footer container">
+      <div class="footer-grid">
+        <div class="footer-col branding">
+          <div class="brand">
+            <div class="cyber-logo"><div class="logo-square">E</div></div>
+            <div class="cyber-text"><span class="cyber-name">EMBER</span></div>
+          </div>
+          <p class="muted">Authentic Ethiopian cuisine crafted for a premium dining experience.</p>
+        </div>
+        
+        <div class="footer-col contact">
+          <h4>Contact Us</h4>
+          <div class="contact-links">
+            <a href="tel:+251911123456" class="contact-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l2.27-2.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <span>+251 911 123 456</span>
+            </a>
+            <a href="mailto:hello@ember-kitchen.com" class="contact-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              <span>hello@ember-kitchen.com</span>
+            </a>
+            <div class="contact-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>Bole Road, Addis Ababa, Ethiopia</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-col feedback">
+          <h4>Rate your experience</h4>
+          <div class="rating-stars" id="footerRating">
+            <button type="button" data-value="1" aria-label="1 Star">★</button>
+            <button type="button" data-value="2" aria-label="2 Stars">★</button>
+            <button type="button" data-value="3" aria-label="3 Stars">★</button>
+            <button type="button" data-value="4" aria-label="4 Stars">★</button>
+            <button type="button" data-value="5" aria-label="5 Stars">★</button>
+          </div>
+          <p id="ratingStatus" class="muted">Tap a star to rate</p>
+        </div>
+
+        <div class="footer-col map">
+          <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.503639839464!2d38.7831!3d9.0051!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOcKwMDAnMTguNCJOIDM4wrA0NycwMC4wIkU!5e0!3m2!1sen!2set!4v1629880000000!5m2!1sen!2set" width="100%" height="150" style="border:0; border-radius: 12px; filter: grayscale(1) invert(1) contrast(1.2);" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year">2026</span> EMBER Kitchen</span>
+        <span>Made for your table</span>
+      </div>
+    </footer>
   </div>
 
   <div class="scrim" id="scrim" hidden></div>
@@ -144,7 +193,7 @@
   </dialog>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <script type="module" src="assets/js/app.js?v=ember-final-45"></script>
+  <script type="module" src="assets/js/app.js?v=ember-final-46"></script>
 </body>
 
 </html>

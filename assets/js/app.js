@@ -1,7 +1,7 @@
 import { signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-import { createOrder, createServiceRequest, watchOrder, watchMenu } from "./firestore.js?v=ember-features-45";
+import { createOrder, createServiceRequest, watchOrder, watchMenu, saveRating } from "./firestore.js?v=ember-features-46";
 import { fallbackMenu, money, escapeHtml } from "./utils.js";
-import { auth } from "./firebase.js?v=ember-auth-45";
+import { auth } from "./firebase.js?v=ember-auth-46";
 
 const $ = selector => document.querySelector(selector);
 const state = {menu:fallbackMenu, category:"All", search:"", language:localStorage.getItem("ember-language") || "en", cart:JSON.parse(localStorage.getItem("ember-cart") || "[]"), orderUnsubscribe:null, activeOrderId:null, lastOrderStatus:null, installPrompt:null};
@@ -375,6 +375,25 @@ $("#languageToggle")?.addEventListener("click",()=>{
 document.addEventListener("click",event=>{if(!event.target.closest(".preferences-wrap"))closePreferencesMenu();});
 $("#callWaiterButton")?.addEventListener("click",()=>{$("#waiterTableNumber").value=$("#tableNumber").value.trim();$("#waiterModal").showModal();});
 $("#sendWaiterRequest")?.addEventListener("click",requestWaiter);
+
+$("#footerRating")?.addEventListener("click", async (e) => {
+  const btn = e.target.closest("button");
+  if (!btn) return;
+  const val = btn.dataset.value;
+  const stars = $("#footerRating").querySelectorAll("button");
+  stars.forEach(s => s.classList.toggle("active", s.dataset.value <= val));
+  
+  $("#ratingStatus").textContent = "Saving your feedback...";
+  try {
+    await saveRating(val);
+    $("#ratingStatus").textContent = "Thank you for your rating!";
+    $("#footerRating").style.pointerEvents = "none";
+  } catch (err) {
+    console.error(err);
+    $("#ratingStatus").textContent = "Couldn't save rating. Try again?";
+  }
+});
+
 $("#loginForm").addEventListener("submit",async e=>{
   e.preventDefault();
   const b=e.submitter;

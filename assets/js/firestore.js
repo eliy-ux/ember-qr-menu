@@ -85,3 +85,11 @@ export async function resetDailyStats() {
   
   return Promise.all(deletions);
 }
+
+export function saveRating(rating) {
+  return addDoc(collection(db, "ratings"), {
+    rating: Number(rating),
+    createdAt: serverTimestamp(),
+    deviceId: localStorage.getItem("ember-device-id")
+  });
+}
