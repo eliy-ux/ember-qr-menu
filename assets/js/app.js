@@ -45,6 +45,7 @@ const translations = {
     done: "Done",
     confirmed: "Order confirmed",
     success: "Order successful",
+    orderSent: "Your order has been sent to the kitchen.",
     serving: "Order serving",
     ready: "Your order is ready",
     enjoy: "The kitchen marked your order as completed. Enjoy your meal."
@@ -74,6 +75,7 @@ const translations = {
     done: "ተከናውኗል",
     confirmed: "ትዕዛዝ ተረጋግጧል",
     success: "ትዕዛዝ ተሳክቷል",
+    orderSent: "ትዕዛዝዎ ወደ ወጥ ቤት ተልኳል።",
     serving: "ምግብ እየቀረበ ነው",
     ready: "ትዕዛዝዎ ዝግጁ ነው",
     enjoy: "ወጥ ቤቱ ትዕዛዝዎን አጠናቋል። በደስታ ይመገቡ።"
@@ -128,7 +130,7 @@ function showDetail(id){const item=state.menu.find(i=>i.id===id);if(!item)return
 
 function applyLanguage(){
   const nodes={
-    "#adminLoginButton .menu-option-label": "admin",
+    "#adminLoginButton": "admin",
     "#openCartButton span:not([aria-hidden])": "order",
     "#installAppButton .menu-option-label": "install",
     ".section-heading .eyebrow": "today",
@@ -247,7 +249,7 @@ function showOrderSuccess(table,total){
 
   if(eyebrow) eyebrow.textContent = t("confirmed");
   if(title) title.textContent = t("success");
-  if(message) message.textContent = t("enjoy");
+  if(message) message.textContent = t("orderSent");
   if(doneBtn) doneBtn.textContent = t("done");
 
   if(!modal.open) modal.showModal();
