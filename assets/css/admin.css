@@ -1,5 +1,5 @@
 .admin-body{min-width:320px;background:#09090b;color:var(--white)}
-.admin-layout{opacity:0;pointer-events:none;transition:opacity .3s ease;min-height:100vh;display:grid;grid-template-columns:252px minmax(0,1fr);background:radial-gradient(circle at 100% 0,rgba(255,102,0,.14),transparent 34rem),radial-gradient(circle at 0 100%,rgba(255,102,0,.07),transparent 32rem),#09090b}
+.admin-layout{opacity:1;pointer-events:auto;transition:opacity .3s ease;min-height:100vh;display:grid;grid-template-columns:252px minmax(0,1fr);background:radial-gradient(circle at 100% 0,rgba(255,102,0,.14),transparent 34rem),radial-gradient(circle at 0 100%,rgba(255,102,0,.07),transparent 32rem),#09090b}
 .admin-layout.is-authenticated{opacity:1;pointer-events:auto}
 .admin-sidebar{position:sticky;top:0;z-index:30;height:100vh;display:flex;flex-direction:column;padding:28px 18px 20px;background:rgba(16,16,18,.88);border-right:1px solid rgba(255,255,255,.1);backdrop-filter:blur(18px)}
 .sidebar-brand-block{display:flex;flex-direction:column;padding:0 10px 30px;border-bottom:1px solid rgba(255,255,255,.09)}

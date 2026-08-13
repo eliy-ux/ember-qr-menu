@@ -4,7 +4,7 @@ import { watchOrders, changeOrderStatus, deleteOrder, watchMenu, addMenuItem, up
 import { money, escapeHtml, fallbackMenu } from "./utils.js";
 
 const $ = selector => document.querySelector(selector);
-const loading = $("#loadingIndicator"); if(loading) loading.style.display = "none";
+
 const state = { orders: [], menu: [], serviceRequests: [], pickedImage: "", role: "admin", orderFilter: "live", orderSearch: "", menuSearch: "", unsubscribeOrders: null, unsubscribeMenu: null, unsubscribeServiceRequests: null, audioContext: null, orderSnapshotReady: false, seenOrderIds: new Set() };
 const toast = message => { const node = $("#toast"); if (!node) return; node.textContent = message; node.classList.add("show"); clearTimeout(toast.timer); toast.timer = setTimeout(() => node.classList.remove("show"), 4200); };
 const firestoreError = (error, fallback) => { const code = String(error?.code || "").replace(/^firebase\\//, ""); if (code === "permission-denied") return `${fallback} Firestore denied this account. Confirm it is an admin account and that the latest rules are deployed.`; if (code === "not-found") return `${fallback} This menu item no longer exists. Refresh the dashboard.`; if (code === "resource-exhausted") return `${fallback} The image or document is too large. Use an image URL or a smaller picture.`; if (code === "invalid-argument") return `${fallback} Check the name, price, category, and image URL.`; return `${fallback} (${code || "unknown error"})`; };
@@ -135,4 +135,4 @@ onAuthStateChanged(auth, async user => {
 });
 
 $("#loginModal").addEventListener("close", () => { if (!auth.currentUser) window.location.href = "index.html"; });
-$("#year").textContent = new Date().getFullYear(); $("#qrBaseUrl").value = new URL("index.html", window.location.href).href; renderOrders(); renderMenuItems(); renderServiceRequests(); setTimeout(() => { if (!auth.currentUser && !$("#loginModal").open) $("#loginModal").showModal(); }, 500);
+$("#year").textContent = new Date().getFullYear(); $("#qrBaseUrl").value = new URL("index.html", window.location.href).href; renderOrders(); renderMenuItems(); renderServiceRequests();
