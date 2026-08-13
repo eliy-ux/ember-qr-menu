@@ -1,6 +1,6 @@
 import { auth } from "./firebase.js";
 import { signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-import { watchOrders, changeOrderStatus, deleteOrder, watchMenu, addMenuItem, updateMenuItem, deleteMenuItem, watchServiceRequests, changeServiceRequestStatus, getUserRole } from "./firestore.js";
+import { watchOrders, changeOrderStatus, deleteOrder, watchMenu, addMenuItem, updateMenuItem, deleteMenuItem, watchServiceRequests, changeServiceRequestStatus, getUserRole, resetDailyStats } from "./firestore.js";
 import { money, escapeHtml, fallbackMenu } from "./utils.js";
 
 const $ = selector => document.querySelector(selector);
@@ -624,6 +624,26 @@ $("#qrForm").addEventListener("submit", event => {
 
 $("#printQrButton").addEventListener("click", () => window.print());
 $("#modalPrintQrButton").addEventListener("click", () => window.print());
+
+$("#resetStatsButton")?.addEventListener("click", async () => {
+  if (!confirm("Are you sure you want to reset all daily stats? This will delete all current orders and service requests.")) return;
+  
+  const btn = $("#resetStatsButton");
+  const originalText = btn.textContent;
+  btn.disabled = true;
+  btn.textContent = "Resetting...";
+  
+  try {
+    await resetDailyStats();
+    toast("All daily stats have been reset.");
+  } catch (error) {
+    console.error(error);
+    toast("Reset failed. Check your Firestore permissions.");
+  } finally {
+    btn.disabled = false;
+    btn.textContent = originalText;
+  }
+});
 
 $("#loginForm").addEventListener("submit", async event => {
   event.preventDefault();

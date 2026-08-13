@@ -1,4 +1,4 @@
-import { addDoc, collection, deleteDoc, doc, getDoc, onSnapshot, orderBy, query, serverTimestamp, setDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+import { addDoc, collection, deleteDoc, doc, getDoc, getDocs, onSnapshot, orderBy, query, serverTimestamp, setDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 import { db } from "./firebase.js";
 
 const trackingRef = id => doc(db, "orderTracking", id);
@@ -70,4 +70,18 @@ export async function getUserRole(email) {
     console.error("Role lookup failed, defaulting to admin UI.", e);
     return "admin";
   }
+}
+
+export async function resetDailyStats() {
+  const ordersSnap = await getDocs(collection(db, "orders"));
+  const trackingSnap = await getDocs(collection(db, "orderTracking"));
+  const serviceSnap = await getDocs(collection(db, "serviceRequests"));
+  
+  const deletions = [
+    ...ordersSnap.docs.map(d => deleteDoc(d.ref)),
+    ...trackingSnap.docs.map(d => deleteDoc(d.ref)),
+    ...serviceSnap.docs.map(d => deleteDoc(d.ref))
+  ];
+  
+  return Promise.all(deletions);
 }
