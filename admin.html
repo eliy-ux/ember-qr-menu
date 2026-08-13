@@ -14,6 +14,42 @@
   <link rel="stylesheet" href="assets/css/admin.css?v=admin-responsive-42">
 </head>
 <body class="admin-body">
+  <!-- Protocol Warning (Hidden by JS if served via http/https) -->
+  <div id="protocolWarning" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#000;color:#fff;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;text-align:center;font-family:sans-serif;">
+    <div style="font-size:60px;margin-bottom:20px;">⚠️</div>
+    <h1 style="color:#ff6600;">Security Block Detected</h1>
+    <p style="max-width:500px;line-height:1.6;font-size:18px;">Modern browsers block Firebase security modules when you open an HTML file directly (double-clicking).</p>
+    <div style="background:#222;padding:20px;border-radius:10px;margin:20px 0;text-align:left;">
+      <p><strong>How to fix:</strong></p>
+      <ol>
+        <li>Open this folder in <strong>VS Code</strong>.</li>
+        <li>Right-click <code>admin.html</code>.</li>
+        <li>Select <strong>"Open with Live Server"</strong>.</li>
+      </ol>
+    </div>
+    <p class="muted">If you are already using a server, this message will disappear in 2 seconds.</p>
+  </div>
+
+  <!-- Loading Indicator -->
+  <div id="adminLoading" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#0a0a0a;z-index:9998;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-family:sans-serif;">
+    <div class="pulse" style="width:50px;height:50px;background:#ff6600;border-radius:50%;margin-bottom:20px;"></div>
+    <h2>Initializing Dashboard...</h2>
+    <p id="loadingStatus">Connecting to Firebase Services</p>
+  </div>
+
+  <script>
+    // Immediate Protocol Check
+    if (window.location.protocol !== 'file:') {
+      document.getElementById('protocolWarning').style.display = 'none';
+    }
+    // Fallback timer to clear loading if JS fails
+    setTimeout(() => {
+      const loader = document.getElementById('adminLoading');
+      if (loader && loader.style.display !== 'none') {
+        document.getElementById('loadingStatus').textContent = 'Taking longer than usual... Check browser console (F12) for errors.';
+      }
+    }, 5000);
+  </script>
 
   <div class="admin-layout">
     <aside class="admin-sidebar">
@@ -214,6 +250,6 @@
   </dialog>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <script type="module" src="assets/js/admin.js?v=admin-features-42"></script>
+  <script type="module" src="assets/js/admin.js"></script>
 </body>
 </html>
