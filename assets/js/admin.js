@@ -656,35 +656,19 @@ document.addEventListener("keypress", async event => {
 function renderQrCode(baseUrl) {
   const qrSrc = `https://api.qrserver.com/v1/create-qr-code/?size=600x600&margin=8&data=${encodeURIComponent(baseUrl)}`;
   const html = `
-    <article class="qr-card-elite" id="qrCaptureArea">
-      <div class="qr-elite-inner">
-        <div class="qr-elite-header">
-          <div class="qr-elite-logo-wrap">
-            <div class="qr-elite-logo">Y</div>
-          </div>
-          <div class="qr-elite-brand">YONI BURGER</div>
-          <div class="qr-elite-divider"></div>
-        </div>
-        
-        <div class="qr-elite-code-wrap">
-          <div class="qr-elite-frame">
-            <img src="${qrSrc}" alt="YONI BURGER menu QR code" crossorigin="anonymous">
-          </div>
-        </div>
-        
-        <div class="qr-elite-footer">
-          <p class="qr-elite-instruction">Scan to view menu & order</p>
-          <p class="qr-elite-url">${escapeHtml(baseUrl)}</p>
-        </div>
-        
-        <div class="qr-elite-watermark">Y</div>
+    <article class="qr-card-mini" id="qrCaptureArea">
+      <div class="qr-mini-logo">Y</div>
+      <div class="qr-mini-code">
+        <img src="${qrSrc}" alt="QR" crossorigin="anonymous">
       </div>
+      <div class="qr-mini-brand">YONI BURGER</div>
+      <div class="qr-mini-url">${escapeHtml(baseUrl)}</div>
     </article>
   `;
   $("#qrGrid").innerHTML = html;
   $("#qrModalBody").innerHTML = html;
   $("#printQrButton").hidden = false;
-  $("#qrStatus").textContent = "Elite Table Tent generated.";
+  $("#qrStatus").textContent = "Clean QR ready.";
   $("#qrModal").showModal();
 }
 

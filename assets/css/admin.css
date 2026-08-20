@@ -750,9 +750,16 @@ dialog.modal > article {
   }
 }
 
-.qr-modal > article {
-  width: auto !important;
-  max-width: 95vw !important;
+.qr-modal > article.qr-modal-mini {
+  width: 320px !important;
+  padding: 24px !important;
+  max-height: none !important;
+  overflow: visible !important;
+  background: #121214 !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
 }
 
 .field-label {
@@ -866,176 +873,103 @@ dialog.modal > article {
   justify-content: center;
 }
 
-/* Elite QR Card Design */
-.qr-card-elite {
+/* Mini & Clean QR Card Design */
+.qr-card-mini {
   background: #fff !important;
   color: #000 !important;
-  padding: 45px;
-  border-radius: 32px;
-  width: 400px;
+  padding: 24px;
+  border-radius: 20px;
+  width: 270px;
   text-align: center;
-  box-shadow: 0 30px 80px rgba(0,0,0,0.25);
-  position: relative;
-  border: 8px solid #f8f8f8;
-  overflow: hidden;
-  background-image: radial-gradient(#eee 1px, transparent 1px);
-  background-size: 20px 20px;
-}
-
-.qr-elite-inner {
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 32px;
-  position: relative;
-  z-index: 2;
+  gap: 16px;
+  border: 1px solid #eee;
 }
 
-.qr-elite-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-  width: 100%;
-}
-
-.qr-elite-logo-wrap {
-  position: relative;
-  padding: 10px;
-}
-
-.qr-elite-logo {
-  width: 70px;
-  height: 70px;
+.qr-mini-logo {
+  width: 44px;
+  height: 44px;
   background: linear-gradient(135deg, #ff8a3d 0%, #ff6600 100%);
   border-radius: 50%;
   display: grid;
   place-items: center;
   font-family: "Playfair Display", serif;
-  font-size: 2.8rem;
+  font-size: 1.8rem;
   font-weight: 900;
   color: #fff;
-  transform: rotate(-6deg);
-  box-shadow: 0 12px 25px rgba(255, 102, 0, 0.4), inset 0 0 15px rgba(255,255,255,0.3);
-  border: 2px solid #fff;
+  transform: rotate(-4deg);
+  box-shadow: 0 4px 12px rgba(255, 102, 0, 0.3);
 }
 
-.qr-elite-brand {
-  font-family: "Playfair Display", serif;
-  font-size: 1.8rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  color: #111;
-  text-transform: uppercase;
+.qr-mini-code {
+  padding: 8px;
+  border: 1px solid #f0f0f0;
+  border-radius: 12px;
 }
 
-.qr-elite-divider {
-  width: 40px;
-  height: 3px;
-  background: #ff6600;
-  border-radius: 10px;
-}
-
-.qr-elite-code-wrap {
-  padding: 20px;
-  background: #fff;
-  border: 1px solid #eee;
-  border-radius: 24px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-}
-
-.qr-elite-frame {
-  padding: 10px;
-  border: 2px dashed #ddd;
-  border-radius: 16px;
-}
-
-.qr-elite-frame img {
+.qr-mini-code img {
   display: block;
-  width: 260px;
-  height: 260px;
+  width: 200px;
+  height: 200px;
 }
 
-.qr-elite-footer {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.qr-elite-instruction {
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: #333;
-  margin: 0;
-}
-
-.qr-elite-url {
-  font-size: 0.85rem;
-  color: #ff6600;
-  font-weight: 600;
-  margin: 0;
-  opacity: 0.7;
-}
-
-.qr-elite-watermark {
-  position: absolute;
-  bottom: -20px;
-  right: -10px;
-  font-size: 12rem;
+.qr-mini-brand {
   font-family: "Playfair Display", serif;
-  font-weight: 900;
-  color: rgba(0,0,0,0.03);
-  z-index: 1;
-  pointer-events: none;
-  transform: rotate(-15deg);
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #111;
 }
 
-/* Modal UI Polish */
-.modal-header-luxury {
-  text-align: center;
-  margin-bottom: 30px;
+.qr-mini-url {
+  font-size: 0.75rem;
+  color: #ff6600;
+  font-weight: 500;
+  opacity: 0.6;
+  word-break: break-all;
 }
 
-.modal-header-luxury h2 {
-  font-size: 2.4rem;
-  letter-spacing: -0.02em;
-}
-
-.qr-modal-actions {
+/* Mini Actions */
+.qr-mini-actions {
   display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin-top: 40px;
-}
-
-.action-row-main {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
+  justify-content: center;
   gap: 12px;
+  width: 100%;
 }
 
-.action-row-main button {
-  height: 54px;
-  justify-content: center;
-}
-
-.outline-button {
-  background: transparent !important;
-  border: 1px solid rgba(255,255,255,0.15) !important;
-  color: #fff !important;
-  height: 48px;
-  border-radius: 14px;
-  font-weight: 600;
+.mini-action-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   transition: all 0.2s;
+  border: none;
 }
 
-.outline-button:hover {
-  background: rgba(255,255,255,0.05) !important;
-  border-color: #fff !important;
+.mini-action-btn.primary {
+  background: var(--orange) !important;
+  color: #fff !important;
+}
+
+.mini-action-btn.secondary {
+  background: rgba(255,255,255,0.08) !important;
+  color: #fff !important;
+  border: 1px solid rgba(255,255,255,0.1) !important;
+}
+
+.mini-action-btn.outline {
+  background: transparent !important;
+  border: 1px solid rgba(255,255,255,0.2) !important;
+  color: #fff !important;
+}
+
+.mini-action-btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
 }
 
 #printQrButton {
@@ -1195,16 +1129,14 @@ dialog.modal > article {
     gap: 12px;
   }
   
-  .qr-card-elite {
-    padding: 24px !important;
+  .qr-card-mini {
+    padding: 16px !important;
     width: 100% !important;
-    border-width: 4px !important;
   }
   
-  .qr-card-elite img {
-    width: 100% !important;
-    height: auto !important;
-    max-width: 240px;
+  .qr-card-mini img {
+    width: 180px !important;
+    height: 180px !important;
   }
 }
 
@@ -1234,10 +1166,9 @@ dialog.modal > article {
   .admin-main {
     padding: 0 !important;
   }
-  .qr-card-elite {
+  .qr-card-mini {
     box-shadow: none !important;
     margin: 0 auto;
     border: none !important;
-    background-image: none !important;
   }
 }
