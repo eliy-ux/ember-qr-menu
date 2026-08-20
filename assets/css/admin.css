@@ -866,146 +866,196 @@ dialog.modal > article {
   justify-content: center;
 }
 
-/* Luxury QR Card Design */
-.qr-card-luxury {
+/* Elite QR Card Design */
+.qr-card-elite {
   background: #fff !important;
   color: #000 !important;
-  padding: 40px;
-  border-radius: 28px;
-  width: 380px;
+  padding: 45px;
+  border-radius: 32px;
+  width: 400px;
   text-align: center;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.25);
   position: relative;
-  border: 1px solid #eee;
+  border: 8px solid #f8f8f8;
+  overflow: hidden;
+  background-image: radial-gradient(#eee 1px, transparent 1px);
+  background-size: 20px 20px;
 }
 
-.qr-card-inner {
+.qr-elite-inner {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 24px;
+  gap: 32px;
+  position: relative;
+  z-index: 2;
 }
 
-.qr-card-header {
+.qr-elite-header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
+  width: 100%;
 }
 
-.qr-luxury-logo {
-  width: 60px;
-  height: 60px;
+.qr-elite-logo-wrap {
+  position: relative;
+  padding: 10px;
+}
+
+.qr-elite-logo {
+  width: 70px;
+  height: 70px;
   background: linear-gradient(135deg, #ff8a3d 0%, #ff6600 100%);
   border-radius: 50%;
   display: grid;
   place-items: center;
   font-family: "Playfair Display", serif;
-  font-size: 2.4rem;
+  font-size: 2.8rem;
   font-weight: 900;
   color: #fff;
   transform: rotate(-6deg);
-  box-shadow: 0 8px 20px rgba(255, 102, 0, 0.3);
+  box-shadow: 0 12px 25px rgba(255, 102, 0, 0.4), inset 0 0 15px rgba(255,255,255,0.3);
+  border: 2px solid #fff;
 }
 
-.qr-luxury-brand {
+.qr-elite-brand {
   font-family: "Playfair Display", serif;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   font-weight: 800;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
   color: #111;
+  text-transform: uppercase;
 }
 
-.qr-code-frame {
-  padding: 15px;
+.qr-elite-divider {
+  width: 40px;
+  height: 3px;
+  background: #ff6600;
+  border-radius: 10px;
+}
+
+.qr-elite-code-wrap {
+  padding: 20px;
   background: #fff;
-  border: 2px solid #f0f0f0;
-  border-radius: 20px;
-  box-shadow: inset 0 2px 8px rgba(0,0,0,0.05);
+  border: 1px solid #eee;
+  border-radius: 24px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
 }
 
-.qr-code-frame img {
+.qr-elite-frame {
+  padding: 10px;
+  border: 2px dashed #ddd;
+  border-radius: 16px;
+}
+
+.qr-elite-frame img {
   display: block;
-  width: 240px;
-  height: 240px;
+  width: 260px;
+  height: 260px;
 }
 
-.qr-card-footer {
+.qr-elite-footer {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
 }
 
-.qr-instruction {
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: #555;
-  letter-spacing: 0.02em;
+.qr-elite-instruction {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #333;
+  margin: 0;
 }
 
-.qr-url {
-  font-size: 0.8rem;
+.qr-elite-url {
+  font-size: 0.85rem;
   color: #ff6600;
-  font-weight: 500;
-  word-break: break-all;
-  opacity: 0.8;
+  font-weight: 600;
+  margin: 0;
+  opacity: 0.7;
 }
 
-/* Modal Header Luxury */
+.qr-elite-watermark {
+  position: absolute;
+  bottom: -20px;
+  right: -10px;
+  font-size: 12rem;
+  font-family: "Playfair Display", serif;
+  font-weight: 900;
+  color: rgba(0,0,0,0.03);
+  z-index: 1;
+  pointer-events: none;
+  transform: rotate(-15deg);
+}
+
+/* Modal UI Polish */
 .modal-header-luxury {
   text-align: center;
   margin-bottom: 30px;
 }
 
-.modal-header-luxury .eyebrow {
-  margin-bottom: 8px;
-}
-
 .modal-header-luxury h2 {
-  margin-top: 5px;
-  font-size: 2.2rem;
-  color: #fff;
-}
-
-.qr-preview-container {
-  display: flex;
-  justify-content: center;
-  padding: 20px 0;
+  font-size: 2.4rem;
+  letter-spacing: -0.02em;
 }
 
 .qr-modal-actions {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  margin-top: 30px;
-  width: 100%;
+  gap: 16px;
+  margin-top: 40px;
 }
 
-.qr-modal-actions .primary-button,
-.qr-modal-actions .secondary-button {
-  width: 100%;
+.action-row-main {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 12px;
+}
+
+.action-row-main button {
+  height: 54px;
   justify-content: center;
-  height: 50px;
+}
+
+.outline-button {
+  background: transparent !important;
+  border: 1px solid rgba(255,255,255,0.15) !important;
+  color: #fff !important;
+  height: 48px;
+  border-radius: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.outline-button:hover {
+  background: rgba(255,255,255,0.05) !important;
+  border-color: #fff !important;
 }
 
 #printQrButton {
-  height: 48px;
-  padding: 0 24px;
+  height: 50px;
+  padding: 0 28px;
   background: var(--orange);
   color: #fff;
   border: none;
   border-radius: 14px;
   font-weight: 700;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
 #printQrButton:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(255, 102, 0, 0.4);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 15px 35px rgba(255, 102, 0, 0.4);
 }
 
 @media (max-width: 900px) {
@@ -1145,12 +1195,13 @@ dialog.modal > article {
     gap: 12px;
   }
   
-  .qr-card-luxury {
+  .qr-card-elite {
     padding: 24px !important;
     width: 100% !important;
+    border-width: 4px !important;
   }
   
-  .qr-card-luxury img {
+  .qr-card-elite img {
     width: 100% !important;
     height: auto !important;
     max-width: 240px;
@@ -1183,9 +1234,10 @@ dialog.modal > article {
   .admin-main {
     padding: 0 !important;
   }
-  .qr-card-luxury {
+  .qr-card-elite {
     box-shadow: none !important;
     margin: 0 auto;
     border: none !important;
+    background-image: none !important;
   }
 }

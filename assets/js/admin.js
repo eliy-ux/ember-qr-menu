@@ -656,30 +656,79 @@ document.addEventListener("keypress", async event => {
 function renderQrCode(baseUrl) {
   const qrSrc = `https://api.qrserver.com/v1/create-qr-code/?size=600x600&margin=8&data=${encodeURIComponent(baseUrl)}`;
   const html = `
-    <article class="qr-card-luxury">
-      <div class="qr-card-inner">
-        <div class="qr-card-header">
-          <div class="qr-luxury-logo">Y</div>
-          <div class="qr-luxury-brand">YONI BURGER</div>
+    <article class="qr-card-elite" id="qrCaptureArea">
+      <div class="qr-elite-inner">
+        <div class="qr-elite-header">
+          <div class="qr-elite-logo-wrap">
+            <div class="qr-elite-logo">Y</div>
+          </div>
+          <div class="qr-elite-brand">YONI BURGER</div>
+          <div class="qr-elite-divider"></div>
         </div>
         
-        <div class="qr-code-frame">
-          <img src="${qrSrc}" alt="YONI BURGER menu QR code" width="300" height="300">
+        <div class="qr-elite-code-wrap">
+          <div class="qr-elite-frame">
+            <img src="${qrSrc}" alt="YONI BURGER menu QR code" crossorigin="anonymous">
+          </div>
         </div>
         
-        <div class="qr-card-footer">
-          <div class="qr-instruction">Scan to view menu & order</div>
-          <div class="qr-url">${escapeHtml(baseUrl)}</div>
+        <div class="qr-elite-footer">
+          <p class="qr-elite-instruction">Scan to view menu & order</p>
+          <p class="qr-elite-url">${escapeHtml(baseUrl)}</p>
         </div>
+        
+        <div class="qr-elite-watermark">Y</div>
       </div>
     </article>
   `;
   $("#qrGrid").innerHTML = html;
   $("#qrModalBody").innerHTML = html;
   $("#printQrButton").hidden = false;
-  $("#qrStatus").textContent = "Premium QR tent ready.";
+  $("#qrStatus").textContent = "Elite Table Tent generated.";
   $("#qrModal").showModal();
 }
+
+$("#downloadQrButton")?.addEventListener("click", async () => {
+  const area = $("#qrCaptureArea");
+  if (!area) return;
+  
+  const btn = $("#downloadQrButton");
+  const original = btn.innerHTML;
+  btn.disabled = true;
+  btn.innerHTML = "Processing...";
+  
+  try {
+    // Inject html2canvas if not present
+    if (typeof html2canvas === "undefined") {
+      await new Promise((resolve, reject) => {
+        const script = document.createElement("script");
+        script.src = "https://html2canvas.hertzen.com/dist/html2canvas.min.js";
+        script.onload = resolve;
+        script.onerror = reject;
+        document.head.appendChild(script);
+      });
+    }
+    
+    const canvas = await html2canvas(area, {
+      scale: 3,
+      backgroundColor: "#ffffff",
+      useCORS: true,
+      logging: false
+    });
+    
+    const link = document.createElement("a");
+    link.download = `yoni-burger-qr-tent.png`;
+    link.href = canvas.toDataURL("image/png");
+    link.click();
+    toast("Table tent saved as PNG");
+  } catch (err) {
+    console.error("Download failed", err);
+    toast("Failed to save image. Try printing instead.");
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = original;
+  }
+});
 
 $("#copyQrLinkButton")?.addEventListener("click", () => {
   const url = $("#qrBaseUrl").value.trim();
