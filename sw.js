@@ -1,27 +1,46 @@
-// Yoni Burger Emergency Kill Switch - v65
-// This Service Worker will unregister itself and clear all caches to fix ERR_FAILED
+const CACHE_NAME = "yoni-burger-v90-showcase";
+const ASSETS = [
+  "./",
+  "./index.html",
+  "./admin.html",
+  "./assets/css/style.css?v=yoni-speed-90",
+  "./assets/css/admin.css?v=yoni-speed-90",
+  "./assets/css/customer-redesign.css?v=yoni-speed-90",
+  "./assets/js/app.js?v=yoni-speed-90",
+  "./assets/js/admin.js?v=yoni-speed-90",
+  "./assets/js/utils.js",
+  "./assets/icons/yoni.svg"
+];
 
 self.addEventListener("install", event => {
-  console.log("[YONI-KILL] Emergency unregistering...");
+  event.waitUntil(
+    caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS))
+  );
   self.skipWaiting();
 });
 
 self.addEventListener("activate", event => {
   event.waitUntil(
-    caches.keys().then(keys => Promise.all(keys.map(key => caches.delete(key))))
-      .then(() => self.registration.unregister())
-      .then(() => self.clients.matchAll())
-      .then(clients => {
-        clients.forEach(client => {
-          if (client.url && "navigate" in client) {
-            client.navigate(client.url);
-          }
-        });
-      })
+    caches.keys().then(keys => Promise.all(
+      keys.filter(key => key !== CACHE_NAME).map(key => caches.delete(key))
+    ))
   );
+  self.clients.claim();
 });
 
-// Pass through all requests to the network directly
 self.addEventListener("fetch", event => {
-  return; // Default browser behavior
+  // Skip cross-origin and Firebase requests to avoid issues
+  if (!event.request.url.startsWith(self.location.origin) || event.request.url.includes("firestore") || event.request.url.includes("firebase")) {
+    return;
+  }
+
+  event.respondWith(
+    fetch(event.request)
+      .then(response => {
+        const copy = response.clone();
+        caches.open(CACHE_NAME).then(cache => cache.put(event.request, copy));
+        return response;
+      })
+      .catch(() => caches.match(event.request))
+  );
 });

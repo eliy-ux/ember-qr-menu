@@ -250,7 +250,7 @@ async function notifyServingOnDevice(order){
 }
 
 function registerPwa(){
-  // if("serviceWorker" in navigator) navigator.serviceWorker.register("./sw.js").catch(error=>console.warn("PWA unavailable",error));
+  if("serviceWorker" in navigator) navigator.serviceWorker.register("./sw.js").catch(error=>console.warn("PWA unavailable",error));
 
   window.addEventListener("beforeinstallprompt", event=>{event.preventDefault();state.installPrompt=event;const button=$("#installAppButton");if(button){button.hidden=false;applyLanguage();}});
   $("#installAppButton")?.addEventListener("click",async()=>{if(!state.installPrompt)return;state.installPrompt.prompt();await state.installPrompt.userChoice;state.installPrompt=null;$("#installAppButton").hidden=true;closePreferencesMenu();});

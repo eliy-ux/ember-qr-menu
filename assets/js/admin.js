@@ -822,3 +822,8 @@ $("#qrBaseUrl").value = new URL("index.html", window.location.href).href;
 renderOrders();
 renderMenuItems();
 renderServiceRequests();
+
+// Final Showcase Edition v90 - PWA Registration
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("./sw.js").catch(err => console.warn("PWA unavailable", err));
+}
