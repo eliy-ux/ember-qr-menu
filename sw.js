@@ -1,14 +1,14 @@
-const CACHE_NAME = "yoni-burger-v60";
+const CACHE_NAME = "yoni-burger-v62";
 const APP_SHELL = [
   "./",
   "./index.html",
-  "./assets/css/style.css?v=yoni-speed-60",
-  "./assets/css/customer-redesign.css?v=yoni-speed-60",
-  "./assets/css/animations.css?v=yoni-speed-60",
-  "./assets/css/responsive.css?v=yoni-speed-60",
-  "./assets/js/app.js?v=yoni-speed-60",
-  "./assets/js/firebase.js?v=yoni-speed-60",
-  "./assets/js/firestore.js?v=yoni-speed-60",
+  "./assets/css/style.css",
+  "./assets/css/customer-redesign.css",
+  "./assets/css/animations.css",
+  "./assets/css/responsive.css",
+  "./assets/js/app.js",
+  "./assets/js/firebase.js",
+  "./assets/js/firestore.js",
   "./assets/js/config.js",
   "./assets/js/utils.js",
   "./manifest.webmanifest",
@@ -45,14 +45,11 @@ self.addEventListener("fetch", event => {
   const { request } = event;
   const url = new URL(request.url);
 
-  // Skip non-GET requests
   if (request.method !== "GET") return;
 
-  // Strategy for static assets and page: Stale-While-Revalidate
   event.respondWith(
     caches.match(request, { ignoreSearch: true }).then(cachedResponse => {
       const fetchPromise = fetch(request).then(networkResponse => {
-        // Only cache successful local responses or images
         if (networkResponse.ok && (
           url.origin === self.location.origin || 
           url.hostname.includes("unsplash.com") || 
@@ -64,21 +61,14 @@ self.addEventListener("fetch", event => {
         }
         return networkResponse;
       }).catch(err => {
-        debugLog("Fetch failed (offline?):", url.pathname);
-        // Offline fallback for navigation
+        debugLog("Fetch failed:", url.pathname);
         if (request.mode === "navigate" && !url.pathname.includes("admin.html")) {
           return caches.match("./index.html");
         }
         throw err;
       });
 
-      if (cachedResponse) {
-        debugLog("Serving from cache:", url.pathname);
-        return cachedResponse;
-      }
-
-      debugLog("Fetching from network:", url.pathname);
-      return fetchPromise;
+      return cachedResponse || fetchPromise;
     })
   );
 });
