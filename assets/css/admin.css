@@ -1,4 +1,4 @@
-/* YONI BURGER Admin Dashboard Framework v68 */
+/* YONI BURGER Admin Dashboard Framework v70 */
 
 :root {
   --orange: #ff6600;
@@ -243,27 +243,17 @@
   border-bottom: 1px solid var(--line);
 }
 
-.order-filters {
-  display: flex;
-  gap: 8px;
-}
-
-.filter-btn {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--line);
-  color: #fff;
-  padding: 6px 14px;
-  border-radius: 8px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.filter-btn.active {
-  background: var(--orange);
-  border-color: var(--orange);
-  color: #fff;
+.section-count {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-left: 14px;
+  font-weight: 400;
+  font-family: "DM Sans", sans-serif;
+  display: inline-block;
+  vertical-align: middle;
+  background: rgba(255,255,255,0.05);
+  padding: 2px 10px;
+  border-radius: 100px;
 }
 
 .order-grid {
@@ -272,7 +262,13 @@
   gap: 24px;
 }
 
-.order-card {
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.order-card, .menu-item-card {
   background: var(--panel);
   border: 1px solid var(--line);
   border-radius: 24px;
@@ -280,17 +276,46 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  transition: all 0.2s ease;
+}
+
+.menu-item-card {
+  padding: 0;
+  overflow: hidden;
+}
+
+.menu-item-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-bottom: 1px solid var(--line);
+}
+
+.menu-item-info {
+  padding: 20px;
+}
+
+.order-card:hover, .menu-item-card:hover {
+  border-color: rgba(255, 102, 0, 0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.2);
 }
 
 .search-bar {
-  background: var(--panel);
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  padding: 10px 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 12px 18px;
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 24px;
+  gap: 12px;
+  margin-bottom: 32px;
+  transition: all 0.2s;
+}
+
+.search-bar:focus-within {
+  border-color: var(--orange);
+  background: rgba(255, 102, 0, 0.03);
 }
 
 .search-bar i {
@@ -307,19 +332,36 @@
 }
 
 .primary-button {
-  background: var(--orange);
-  color: #fff;
-  border: 0;
-  border-radius: 12px;
-  padding: 12px 20px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.2s;
+  background: var(--orange) !important;
+  color: #fff !important;
+  border: 0 !important;
+  border-radius: 12px !important;
+  padding: 12px 20px !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  transition: all 0.2s !important;
 }
 
 .primary-button:hover {
-  background: var(--orange-2);
-  transform: translateY(-1px);
+  background: var(--orange-2) !important;
+  transform: translateY(-1px) !important;
+}
+
+.secondary-button {
+  background: rgba(255, 255, 255, 0.05) !important;
+  background-image: none !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #fff !important;
+  border-radius: 12px !important;
+  padding: 10px 16px !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  transition: all 0.2s !important;
+}
+
+.secondary-button:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
 }
 
 /* Mobile Breakpoints */
@@ -364,7 +406,7 @@
     flex-direction: column;
     align-items: stretch;
   }
-  .order-grid {
+  .order-grid, .menu-grid {
     grid-template-columns: 1fr;
   }
 }
@@ -433,15 +475,4 @@
   color: #2fc773;
   background: rgba(47, 199, 115, 0.05);
   border-color: rgba(47, 199, 115, 0.2);
-}
-
-@media (max-width: 640px) {
-  .header-actions {
-    justify-content: flex-start;
-    gap: 8px;
-  }
-  .admin-action-btn {
-    padding: 6px 12px;
-    font-size: 0.75rem;
-  }
 }
