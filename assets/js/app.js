@@ -151,7 +151,7 @@ ${item.nameAm ? `<div class="name-am-detail">${escapeHtml(item.nameAm)}</div>` :
 
 function applyLanguage(){
   const nodes={
-    "#adminLoginButton": "admin",
+    "#adminLoginButton .menu-option-label": "admin",
     "#openCartButton span:not([aria-hidden])": "order",
     "#installAppButton .menu-option-label": "install",
     ".section-heading .eyebrow": "today",
@@ -171,10 +171,12 @@ function applyLanguage(){
   Object.entries(nodes).forEach(([selector,key])=>{
     const node=$(selector);
     if(node) {
-      if (node.childNodes.length > 0 && node.childNodes[0].nodeType === 3) {
-        node.childNodes[0].textContent = t(key);
+      // Find text node or target specifically to avoid wiping icons
+      const label = node.querySelector(".menu-option-label") || node.querySelector("span:not([aria-hidden])") || node;
+      if (label.childNodes.length > 0 && label.childNodes[0].nodeType === 3) {
+        label.childNodes[0].textContent = t(key);
       } else {
-        node.textContent = t(key);
+        label.textContent = t(key);
       }
     }
   });
@@ -251,12 +253,10 @@ function registerPwa(){
   // if("serviceWorker" in navigator) navigator.serviceWorker.register("./sw.js").catch(error=>console.warn("PWA unavailable",error));
 
   window.addEventListener("beforeinstallprompt", event=>{event.preventDefault();state.installPrompt=event;const button=$("#installAppButton");if(button){button.hidden=false;applyLanguage();}});
-  $("#installAppButton")?.addEventListener("click",async()=>{if(!state.installPrompt)return;state.installPrompt.prompt();await state.installPrompt.userChoice;state.installPrompt=null;$("#installAppButton").hidden=true;closePreferencesMenu();});
+  $("#installAppButton")?.addEventListener("click",async()=>{if(!state.installPrompt)return;state.installPrompt.prompt();await state.installPrompt.userChoice;state.installPrompt=null;$("#installAppButton").hidden=true;});
 }
 
-function openPreferencesMenu(){const menu=$("#preferencesMenu");const toggle=$("#menuToggle");if(!menu||!toggle)return;menu.hidden=false;toggle.setAttribute("aria-expanded","true");}
-function closePreferencesMenu(){const menu=$("#preferencesMenu");const toggle=$("#menuToggle");if(!menu||!toggle)return;menu.hidden=true;toggle.setAttribute("aria-expanded","false");}
-function togglePreferencesMenu(){const menu=$("#preferencesMenu");if(menu?.hidden)openPreferencesMenu();else closePreferencesMenu();}
+
 
 function showOrderSuccess(table,total){
   const modal = $("#orderSuccessModal");
@@ -382,18 +382,14 @@ $("#searchInput").addEventListener("input",e=>{state.search=e.target.value;rende
 $("#checkoutButton").addEventListener("click",checkout);
 $("#adminLoginButton")?.addEventListener("click", (e) => {
   e.preventDefault();
-  closePreferencesMenu();
   $("#loginModal").showModal();
 });
-$("#menuToggle")?.addEventListener("click",togglePreferencesMenu);
 $("#languageToggle")?.addEventListener("click",()=>{
   state.language=state.language==="en"?"am":"en";
   localStorage.setItem("ember-language",state.language);
   applyLanguage();
   renderMenu();
-  closePreferencesMenu();
 });
-document.addEventListener("click",event=>{if(!event.target.closest(".preferences-wrap"))closePreferencesMenu();});
 $("#callWaiterButton")?.addEventListener("click",()=>{$("#waiterTableNumber").value=$("#tableNumber").value.trim();$("#waiterModal").showModal();});
 $("#sendWaiterRequest")?.addEventListener("click",requestWaiter);
 
@@ -433,7 +429,7 @@ $("#loginForm").addEventListener("submit",async e=>{
   }
 });
 
-onAuthStateChanged(auth,user=>{const label=$("#adminLoginButton .menu-option-label");if(label)label.textContent=user && !user.isAnonymous ? "Dashboard" : t("admin");});
+onAuthStateChanged(auth,user=>{const label=$("#adminLoginButton .menu-option-label") || $("#adminLoginButton");if(label)label.textContent=user && !user.isAnonymous ? "Dashboard" : t("admin");});
 $("#year").textContent=new Date().getFullYear();
 applyLanguage();
 renderCategories();
