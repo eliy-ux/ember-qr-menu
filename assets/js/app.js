@@ -1,12 +1,12 @@
 import { signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-import { createOrder, createServiceRequest, watchOrder, watchMenu, saveRating } from "./firestore.js?v=yoni-speed-62";
+import { createOrder, createServiceRequest, watchOrder, watchMenu, saveRating } from "./firestore.js?v=yoni-speed-63";
 import { fallbackMenu, money, escapeHtml } from "./utils.js";
-import { auth } from "./firebase.js?v=yoni-speed-62";
+import { auth } from "./firebase.js?v=yoni-speed-63";
 
 const $ = selector => document.querySelector(selector);
 const state = {menu:fallbackMenu, category:"All", search:"", language:localStorage.getItem("ember-language") || "en", cart:JSON.parse(localStorage.getItem("ember-cart") || "[]"), orderUnsubscribe:null, activeOrderId:null, lastOrderStatus:null, installPrompt:null};
 const deviceStorageKey = "ember-device-id";
-const debugLog = (...args) => console.info("[EMBER]", ...args);
+const debugLog = (...args) => console.info("[YONI]", ...args);
 const getDeviceId = () => {
   let deviceId = localStorage.getItem(deviceStorageKey);
   if(!deviceId){
@@ -18,14 +18,19 @@ const getDeviceId = () => {
 const saveCart = () => localStorage.setItem("ember-cart", JSON.stringify(state.cart));
 const toast = message => { const node=$("#toast"); node.textContent=message; node.classList.add("show"); clearTimeout(toast.timer); toast.timer=setTimeout(()=>node.classList.remove("show"),3200); };
 const image = item => {
-  if (!item.image) return "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=600&q=70";
+  if (!item.image || typeof item.image !== "string") return "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=600&q=70";
   
   if (item.image.includes("unsplash.com")) {
-    const url = new URL(item.image);
-    url.searchParams.set("w", "600");
-    url.searchParams.set("q", "70");
-    url.searchParams.set("auto", "format");
-    return url.toString();
+    try {
+      const url = new URL(item.image);
+      url.searchParams.set("w", "600");
+      url.searchParams.set("q", "70");
+      url.searchParams.set("auto", "format");
+      return url.toString();
+    } catch (e) {
+      console.warn("Invalid image URL:", item.image);
+      return item.image;
+    }
   }
   return item.image;
 };

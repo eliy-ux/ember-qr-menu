@@ -1,4 +1,4 @@
-const CACHE_NAME = "yoni-burger-v62";
+const CACHE_NAME = "yoni-burger-v63";
 const APP_SHELL = [
   "./",
   "./index.html",
@@ -50,21 +50,27 @@ self.addEventListener("fetch", event => {
   event.respondWith(
     caches.match(request, { ignoreSearch: true }).then(cachedResponse => {
       const fetchPromise = fetch(request).then(networkResponse => {
-        if (networkResponse.ok && (
-          url.origin === self.location.origin || 
-          url.hostname.includes("unsplash.com") || 
-          url.hostname.includes("gstatic.com") ||
-          url.hostname.includes("googleapis.com")
-        )) {
+        // Cache successful responses from our origin or allowed external domains
+        const isAllowedExternal = ["unsplash.com", "gstatic.com", "googleapis.com", "manuscdn.com"].some(d => url.hostname.includes(d));
+        
+        if (networkResponse.ok && (url.origin === self.location.origin || isAllowedExternal)) {
           const responseToCache = networkResponse.clone();
           caches.open(CACHE_NAME).then(cache => cache.put(request, responseToCache));
         }
         return networkResponse;
       }).catch(err => {
-        debugLog("Fetch failed:", url.pathname);
+        debugLog("Fetch failed:", url.href);
+        
+        // Navigation fallback
         if (request.mode === "navigate" && !url.pathname.includes("admin.html")) {
           return caches.match("./index.html");
         }
+        
+        // Image fallback
+        if (request.destination === "image") {
+          return caches.match("https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=600&q=70");
+        }
+        
         throw err;
       });
 
