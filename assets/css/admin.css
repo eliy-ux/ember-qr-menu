@@ -705,8 +705,17 @@ button, .primary-button, .secondary-button, .admin-action-btn, .status-btn {
 
 .modal-close {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 16px;
+  right: 16px;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+.modal-close:hover {
+  background: rgba(255, 80, 80, 0.2) !important;
+  border-color: rgba(255, 80, 80, 0.4) !important;
+  color: #ff5050 !important;
 }
 
 .qr-modal-actions {
