@@ -5,9 +5,9 @@
 .sidebar-brand-block{display:flex;flex-direction:column;padding:0 10px 30px;border-bottom:1px solid rgba(255,255,255,.09)}
 .admin-sidebar .admin-brand{display:flex;align-items:center;gap:14px;margin:0 0 20px;color:#fff;text-decoration:none;letter-spacing:0;font-size:inherit;font-weight:700}
 .admin-sidebar .cyber-logo{position:relative;width:44px;height:44px;display:grid;place-items:center;flex-shrink:0}
-.admin-sidebar .logo-square{width:100%;height:100%;background:linear-gradient(135deg,#ff8a3d 0%,#ff6600 100%);border-radius:50%;display:grid;place-items:center;font-family:"Playfair Display",serif;font-size:1.8rem;font-weight:900;color:#fff;box-shadow:0 4px 20px rgba(255,102,0,.58),inset 0 0 15px rgba(255,255,255,.1);transition:all .5s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden;transform:rotate(-4deg)}
-.admin-sidebar .logo-square::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.15) 0%,transparent 70%)}
-.admin-sidebar .admin-brand:hover .logo-square{transform:rotate(2deg) scale(1.1);background:linear-gradient(135deg,#ffb06e 0%,#ff6600 100%);box-shadow:0 8px 30px rgba(255,102,0,.68),0 0 24px rgba(255,102,0,.48)}
+.admin-sidebar .logo-circle{width:100%;height:100%;background:linear-gradient(135deg,#ff8a3d 0%,#ff6600 100%);border-radius:50%;display:grid;place-items:center;font-family:"Playfair Display",serif;font-size:1.8rem;font-weight:900;color:#fff;box-shadow:0 4px 20px rgba(255,102,0,.58),inset 0 0 15px rgba(255,255,255,.1);transition:all .5s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden;transform:rotate(-4deg)}
+.admin-sidebar .logo-circle::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.15) 0%,transparent 70%)}
+.admin-sidebar .admin-brand:hover .logo-circle{transform:rotate(2deg) scale(1.1);background:linear-gradient(135deg,#ffb06e 0%,#ff6600 100%);box-shadow:0 8px 30px rgba(255,102,0,.68),0 0 24px rgba(255,102,0,.48)}
 .admin-sidebar .cyber-text{display:flex;flex-direction:column;gap:0;min-width:0}
 .admin-sidebar .cyber-name{font-family:"Playfair Display",serif;font-weight:800;font-size:1.3rem;letter-spacing:.1em;color:#fff;line-height:1.1}
 .admin-sidebar .cyber-status{font-size:.65rem;font-weight:700;letter-spacing:.1em;color:#2fc773;display:flex;align-items:center;gap:5px;margin-top:2px}
