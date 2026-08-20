@@ -138,8 +138,8 @@ ${line.nameAm ? `<div class="name-am-cart">${escapeHtml(line.nameAm)}</div>` : '
 
 function addToCart(id){ const item=state.menu.find(i=>i.id===id); if(!item)return; const line=state.cart.find(i=>i.id===id); if(line)line.quantity++;else state.cart.push({...item,quantity:1}); saveCart();renderCart();toast(`${item.name} added to your order`); }
 function changeQuantity(id,step){const line=state.cart.find(i=>i.id===id);if(!line)return;line.quantity+=step;if(line.quantity<1)state.cart=state.cart.filter(i=>i.id!==id);saveCart();renderCart();}
-function openCart(){ $("#cartDrawer").classList.add("open"); $("#cartDrawer").setAttribute("aria-hidden","false"); $("#scrim").hidden=false;document.body.style.overflow="hidden"; }
-function closeCart(){ $("#cartDrawer").classList.remove("open"); $("#cartDrawer").setAttribute("aria-hidden","true"); $("#scrim").hidden=true;document.body.style.overflow=""; }
+function openCart(){ $("#cartDrawer").classList.add("open"); $("#cartDrawer").setAttribute("aria-hidden","false"); $("#scrim").hidden=false;document.body.style.overflow="hidden"; document.body.classList.add("cart-open"); }
+function closeCart(){ $("#cartDrawer").classList.remove("open"); $("#cartDrawer").setAttribute("aria-hidden","true"); $("#scrim").hidden=true;document.body.style.overflow=""; document.body.classList.remove("cart-open"); }
 function showDetail(id){const item=state.menu.find(i=>i.id===id);if(!item)return; $("#itemModalBody").innerHTML=`<img class="modal-image" src="${image(item)}" alt="${escapeHtml(item.name)}"><p class="eyebrow">${escapeHtml(item.category)}</p><h2>${escapeHtml(item.name)}</h2>
 ${item.nameAm ? `<div class="name-am-detail">${escapeHtml(item.nameAm)}</div>` : ''}
 <p>${escapeHtml(item.description)}</p><span class="modal-price">${money(item.price)}</span><button class="primary-button" data-add="${item.id}" data-close-after-add="true">Add to order</button>`;$("#itemModal").showModal();}
