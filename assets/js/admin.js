@@ -67,6 +67,31 @@ function formatDate(value) {
   return "Just received";
 }
 
+function switchTab(tabId) {
+  
+  document.querySelectorAll(".admin-section").forEach(s => s.classList.remove("is-active"));
+  document.querySelectorAll(".admin-nav-link").forEach(l => l.classList.remove("is-active"));
+  
+  
+  const section = $(tabId.startsWith("#") ? tabId : `#${tabId}`);
+  if (section) section.classList.add("is-active");
+  
+  
+  const link = document.querySelector(`.admin-nav-link[href="${tabId}"]`);
+  if (link) link.classList.add("is-active");
+  
+  
+  if (window.innerWidth <= 900) {
+    const nav = $(".admin-nav");
+    if (nav && link) {
+      nav.scrollTo({
+        left: link.offsetLeft - 20,
+        behavior: "smooth"
+      });
+    }
+  }
+}
+
 function orderReference(order) {
   const raw = String(order.id || "").replace(/[^a-z0-9]/gi, "").toUpperCase();
   return raw ? `#${raw.slice(-6)}` : "#NEW";
@@ -369,6 +394,16 @@ function enableDashboard() {
 }
 
 document.addEventListener("click", async event => {
+  
+  const navLink = event.target.closest(".admin-nav-link");
+  if (navLink && navLink.getAttribute("href").startsWith("#")) {
+    event.preventDefault();
+    const hash = navLink.getAttribute("href");
+    window.location.hash = hash;
+    switchTab(hash);
+    return;
+  }
+
   const target = event.target.closest("button");
   if (!target) return;
   
@@ -679,6 +714,10 @@ onAuthStateChanged(auth, async user => {
     document.body.classList.toggle("menu-editing-disabled", state.role !== "admin");
     if (state.role !== "admin") toast("Staff accounts can manage orders only. Sign in with an admin account to edit the menu.");
     $(".admin-layout").classList.add("is-authenticated");
+    
+    const currentHash = window.location.hash || "#ordersSection";
+    switchTab(currentHash);
+    
     enableDashboard();
   } else {
     if (user?.isAnonymous) signOut(auth).catch(error => console.warn("Could not clear anonymous customer session.", error));
