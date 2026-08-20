@@ -12,7 +12,7 @@ const APP_SHELL = [
   "./assets/js/config.js",
   "./assets/js/utils.js",
   "./manifest.webmanifest",
-  "./assets/icons/yoni.svg"
+  "./assets/icons/yoni-circle.png"
 ];
 
 const debugLog = (...args) => console.log("%c[YONI-SPEED]", "color: #ff6600; font-weight: bold;", ...args);
