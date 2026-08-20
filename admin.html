@@ -182,28 +182,40 @@
       <h2 id="menuItemModalTitle">Add menu item</h2>
       <form id="menuItemForm">
         <input id="menuItemId" type="hidden">
-        <label class="field-label">Name (English)<input id="menuItemName" type="text" placeholder="e.g. Yoni Classic Burger" required></label>
-        <label class="field-label">Name (Amharic)<input id="menuItemNameAm" type="text" placeholder="ለምሳሌ፦ ዮኒ ክላሲክ በርገር"></label>
+        
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+          <label class="field-label">Name (English)<input id="menuItemName" type="text" placeholder="e.g. Yoni Classic Burger" required></label>
+          <label class="field-label">Name (Amharic)<input id="menuItemNameAm" type="text" placeholder="ለምሳሌ፦ ዮኒ ክላሲክ በርገር"></label>
+        </div>
+
         <label class="field-label">Description<textarea id="menuItemDescription" placeholder="e.g. Double smashed beef, house sauce, pickles and fries." rows="3"></textarea></label>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+        
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 20px;">
           <label class="field-label">Price (Br)<input id="menuItemPrice" type="number" step="0.01" placeholder="0.00" required></label>
           <label class="field-label">Category<input id="menuItemCategory" type="text" list="categoryOptions" placeholder="e.g. Burgers" required></label>
           <datalist id="categoryOptions"></datalist>
         </div>
+
         <label class="field-label">Dietary tags <span>(comma-separated: vegetarian, vegan, spicy, gluten-free)</span><input id="menuItemDietary" type="text" placeholder="e.g. vegetarian, gluten-free"></label>
+        
         <label class="checkbox-field"><input id="menuItemOutOfStock" type="checkbox"><span>Mark as out of stock</span></label>
+        
         <label class="field-label">Image URL
-          <div style="display:flex;gap:10px">
+          <div style="display:flex; gap:12px;">
             <input id="menuItemImage" type="url" placeholder="https://..." style="flex:1">
-            <button class="text-button" id="chooseImageButton" type="button">Choose a picture</button>
+            <button class="text-button" id="chooseImageButton" type="button">Change picture</button>
           </div>
           <input id="menuItemImageFile" type="file" accept="image/*" hidden>
         </label>
+
         <div class="image-picker">
           <img id="menuItemPreview" alt="Menu item preview" hidden>
-          <button class="text-button" id="removeImageButton" type="button" style="color:#ff5050" hidden>Remove picture</button>
+          <div class="image-picker-actions">
+            <button class="text-button" id="removeImageButton" type="button" style="color:#ff5050" hidden>Remove picture</button>
+          </div>
         </div>
-        <button class="primary-button" type="submit" style="width:100%;margin-top:20px">Save item</button>
+
+        <button class="primary-button" type="submit" style="width:100%; margin-top:30px; padding: 16px !important;">Save Changes</button>
       </form>
     </article>
   </dialog>
@@ -225,6 +237,6 @@
   </dialog>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <script type="module" src="assets/js/admin.js?v=yoni-speed-75"></script>
+  <script type="module" src="assets/js/admin.js?v=yoni-speed-76"></script>
 </body>
 </html>
