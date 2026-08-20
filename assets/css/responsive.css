@@ -1,4 +1,4 @@
-/* EMBER Professional Responsive Framework v2 - Polished */
+/* YONI BURGER Professional Responsive Framework v66 */
 
 /* Fluid Container */
 .container {
@@ -8,21 +8,16 @@
   padding: 0 clamp(16px, 4vw, 40px);
 }
 
-/* Base Desktop & Grid */
+/* Base Desktop & Grid - Scoped to Customer Menu */
 @media (min-width: 1024px) {
-  .menu-grid {
+  .page-shell .menu-grid {
     grid-template-columns: repeat(4, 1fr) !important;
   }
 }
 
-/* Tablets & Small Laptops */
-@media (max-width: 1023px) {
-
-}
-
-/* Mobile Devices */
+/* Mobile Devices - Scoped to Customer Menu */
 @media (max-width: 640px) {
-  .site-header {
+  .page-shell .site-header {
     height: 64px;
     padding: 0 12px;
     top: 8px;
@@ -30,47 +25,45 @@
     border-radius: 18px;
   }
   
-
-  
-  .section-heading {
+  .page-shell .section-heading {
     flex-direction: column;
     align-items: flex-start;
     gap: 12px;
   }
   
-  .search {
+  .page-shell .search {
     width: 100%;
     max-width: 100%;
   }
   
-  .categories {
+  .page-shell .categories {
     padding: 20px 0;
     margin: 0 -16px;
     padding-left: 16px;
     padding-right: 16px;
   }
   
-  .menu-grid {
+  .page-shell .menu-grid {
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 12px !important;
   }
 
-  .food-card {
+  .page-shell .food-card {
     border-radius: 16px;
   }
 
-  .food-info {
+  .page-shell .food-info {
     padding: 12px 10px;
   }
 
-  .food-info h3 {
+  .page-shell .food-info h3 {
     font-size: 0.95rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
 
-  .food-info p {
+  .page-shell .food-info p {
     font-size: 0.75rem;
     margin-bottom: 10px;
     display: -webkit-box;
@@ -79,57 +72,51 @@
     overflow: hidden;
   }
 
-  .price {
+  .page-shell .price {
     font-size: 0.95rem;
   }
 
-  .add-button {
+  .page-shell .add-button {
     width: 32px;
     height: 32px;
   }
   
-  .cart-drawer {
+  .page-shell .cart-drawer {
     width: 100%;
   }
   
-  .modal {
+  .page-shell .modal {
     padding: 16px;
   }
 }
 
 /* Small Phones (iPhone SE, etc.) */
 @media (max-width: 380px) {
-
-  .menu-grid {
+  .page-shell .menu-grid {
     gap: 8px !important;
   }
-  .food-info h3 {
+  .page-shell .food-info h3 {
     font-size: 0.85rem;
   }
-  .price {
+  .page-shell .price {
     font-size: 0.85rem;
   }
   
-  .cyber-logo {
+  .page-shell .cyber-logo {
     width: 38px;
     height: 38px;
   }
-  .logo-square { font-size: 1.4rem; }
-  .cyber-name { font-size: 1rem; }
-  .cyber-status { font-size: 0.5rem; }
+  .page-shell .logo-circle { font-size: 1.4rem; }
+  .page-shell .cyber-name { font-size: 1rem; }
+  .page-shell .cyber-status { font-size: 0.5rem; }
   
-  .cart-button span {
+  .page-shell .cart-button span {
     display: none;
   }
 }
 
-/* Orientation handling */
-@media (max-height: 500px) and (orientation: landscape) {
-
-}
-
 /* Safari mobile viewport height fix */
-.cart-drawer {
+.page-shell .cart-drawer {
   height: 100vh;
   height: -webkit-fill-available;
 }
