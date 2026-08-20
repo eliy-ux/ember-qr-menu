@@ -35,27 +35,9 @@ a, button, input, textarea, [role="button"] { -webkit-tap-highlight-color: trans
 /* Waiter & Feature Styles */
 .compact-modal{max-width:380px;margin:auto;text-align:center}.waiter-button{margin-bottom:12px;width:100%;border-color:rgba(255,255,255,.15);color:#fff;font-size:.88rem}.waiter-button:hover{background:rgba(255,255,255,.05);border-color:#fff}
 
-/* Direct Icon Buttons for Header */
-.header-actions .icon-button {
-  width: 42px;
-  height: 42px;
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 12px;
-  background: rgba(255,255,255,0.04);
-  display: grid;
-  place-items: center;
-  color: #fff;
-  transition: all 0.2s;
-}
-.header-actions .icon-button:hover {
-  background: rgba(255,102,0,0.1);
-  border-color: rgba(255,102,0,0.4);
-  color: var(--orange);
-}
-.language-toggle .menu-option-label {
-  font-size: 0.8rem;
-  font-weight: 800;
-}
+/* Customer preferences menu */
+.preferences-wrap{position:relative;display:flex;align-items:center}.menu-toggle{width:42px;height:42px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,0.04);display:grid;place-content:center;gap:4px;padding:0;transition:background .2s,border-color .2s,transform .2s}.menu-toggle:hover,.menu-toggle[aria-expanded="true"]{background:rgba(255,102,0,.14);border-color:var(--orange)}.menu-toggle span{display:block;width:17px;height:2px;border-radius:3px;background:#fff;transition:transform .2s,opacity .2s}.menu-toggle[aria-expanded="true"] span:first-child{transform:translateY(6px) rotate(45deg)}.menu-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}.menu-toggle[aria-expanded="true"] span:last-child{transform:translateY(-6px) rotate(-45deg)}.preferences-menu{position:absolute;right:0;top:calc(100% + 12px);z-index:35;width:190px;padding:7px;border:1px solid rgba(255,255,255,.1);border-radius:16px;background:rgba(25,25,25,.97);box-shadow:0 18px 45px rgba(0,0,0,.38);backdrop-filter:blur(14px);animation:yoni-menu-in .18s ease-out}.preferences-menu[hidden]{display:none}.menu-option{width:100%;display:flex;align-items:center;gap:10px;border:0;border-radius:11px;background:transparent;color:#fff;padding:11px 12px;text-align:left;font-size:.82rem;font-weight:700}.menu-option:hover{background:rgba(255,102,0,.14);color:var(--orange-2)}.menu-option-icon{width:23px;height:23px;display:grid;place-items:center;border:1px solid rgba(255,102,0,.45);border-radius:7px;color:var(--orange-2);font-size:.72rem}.menu-option-label{flex:1}.preferences-menu #adminLoginButton{border-top:1px solid rgba(255,255,255,.1);margin-top:6px;padding-top:12px}@keyframes yoni-menu-in{from{opacity:0;transform:translateY(-5px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media (max-width:560px){.header-actions{gap:8px}.preferences-menu{right:-4px}.text-button#adminLoginButton{font-size:.78rem}}
 
 
 /* Shared modal close control alignment */

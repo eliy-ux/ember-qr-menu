@@ -253,8 +253,12 @@ function registerPwa(){
   // if("serviceWorker" in navigator) navigator.serviceWorker.register("./sw.js").catch(error=>console.warn("PWA unavailable",error));
 
   window.addEventListener("beforeinstallprompt", event=>{event.preventDefault();state.installPrompt=event;const button=$("#installAppButton");if(button){button.hidden=false;applyLanguage();}});
-  $("#installAppButton")?.addEventListener("click",async()=>{if(!state.installPrompt)return;state.installPrompt.prompt();await state.installPrompt.userChoice;state.installPrompt=null;$("#installAppButton").hidden=true;});
+  $("#installAppButton")?.addEventListener("click",async()=>{if(!state.installPrompt)return;state.installPrompt.prompt();await state.installPrompt.userChoice;state.installPrompt=null;$("#installAppButton").hidden=true;closePreferencesMenu();});
 }
+
+function openPreferencesMenu(){const menu=$("#preferencesMenu");const toggle=$("#menuToggle");if(!menu||!toggle)return;menu.hidden=false;toggle.setAttribute("aria-expanded","true");}
+function closePreferencesMenu(){const menu=$("#preferencesMenu");const toggle=$("#menuToggle");if(!menu||!toggle)return;menu.hidden=true;toggle.setAttribute("aria-expanded","false");}
+function togglePreferencesMenu(){const menu=$("#preferencesMenu");if(menu?.hidden)openPreferencesMenu();else closePreferencesMenu();}
 
 
 
@@ -382,14 +386,18 @@ $("#searchInput").addEventListener("input",e=>{state.search=e.target.value;rende
 $("#checkoutButton").addEventListener("click",checkout);
 $("#adminLoginButton")?.addEventListener("click", (e) => {
   e.preventDefault();
+  closePreferencesMenu();
   $("#loginModal").showModal();
 });
+$("#menuToggle")?.addEventListener("click",togglePreferencesMenu);
 $("#languageToggle")?.addEventListener("click",()=>{
   state.language=state.language==="en"?"am":"en";
   localStorage.setItem("ember-language",state.language);
   applyLanguage();
   renderMenu();
+  closePreferencesMenu();
 });
+document.addEventListener("click",event=>{if(!event.target.closest(".preferences-wrap"))closePreferencesMenu();});
 $("#callWaiterButton")?.addEventListener("click",()=>{$("#waiterTableNumber").value=$("#tableNumber").value.trim();$("#waiterModal").showModal();});
 $("#sendWaiterRequest")?.addEventListener("click",requestWaiter);
 

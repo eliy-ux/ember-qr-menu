@@ -179,38 +179,24 @@ body.cart-open .site-header {
   border: 1px solid rgba(255,255,255,.2); 
 }
 
-.secondary-button {
-  min-height: 44px;
-  padding: 0 16px;
-  border: 1px solid var(--ember-border-bright);
+.menu-toggle {
+  display: grid;
+  place-content: center;
+  gap: 4px;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--ember-border);
   border-radius: 14px;
-  background: rgba(255,255,255,0.05);
+  background: rgba(255,255,255,.055);
   color: #fff;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-weight: 700;
+  box-shadow: 0 8px 22px rgba(0,0,0,.18);
   transition: all 0.3s ease;
-  cursor: pointer;
 }
-
-.secondary-button:hover {
-  background: rgba(255,102,0,0.1);
-  border-color: var(--ember-orange);
-  color: var(--ember-orange-light);
-  box-shadow: 0 0 15px rgba(255,102,0,0.15);
-}
-
-.language-toggle {
-  padding: 0 12px;
-  min-width: 50px;
-  justify-content: center;
-}
-
-.language-toggle .menu-option-label {
-  font-size: 0.9rem;
-  font-family: inherit;
-}
+.menu-toggle:hover { background: rgba(255,102,0,.16); border-color: rgba(255,102,0,.55); transform: translateY(-1px); }
+.menu-toggle span { display: block; width: 18px; height: 2px; border-radius: 9px; background: #fff; transition: transform .2s ease, opacity .2s ease; }
+.menu-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.menu-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.menu-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 .menu-toggle {
   display: grid;
   place-content: center;
