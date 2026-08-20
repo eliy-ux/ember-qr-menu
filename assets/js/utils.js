@@ -13,7 +13,7 @@ const getImg = (id, fallback) => {
     "veggie-delight": "M7449vYf6q8",
     "classic-fries": "k51T5qXqG-k",
     "truffle-fries": "6j_S1n26rW0",
-    "onion-rings": "x0oT1z-r-r0",
+    "onion-rings": "1639146175554-825f9ff88814",
     "ethiopian-coffee": "UpJXobZtBvaFdQrL",
     "honey-tej": "rulCxpaQvtaOzmoM",
     "craft-beer": "GSGnXICCpeWHqxxj",
@@ -41,5 +41,8 @@ export const fallbackMenu = [
   {id:"honey-tej", name:"Premium Honey Tej", nameAm:"ፕሪሚየም የማር ጠጅ", description:"Artisanal Ethiopian honey wine, sweet and refreshing.", price:550, category:"Drinks", dietary:[], image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663887810301/rulCxpaQvtaOzmoM.jpeg"},
   {id:"craft-beer", name:"Local Craft Beer", nameAm:"የሀገር ውስጥ ቢራ", description:"Crisp lager from local Ethiopian breweries.", price:400, category:"Drinks", dietary:[], image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663887810301/GSGnXICCpeWHqxxj.jpg"},
   {id:"chocolate-lava", name:"Molten Chocolate Lava", nameAm:"ቾኮሌት ላቫ ኬክ", description:"Warm chocolate cake with a gooey center, served with vanilla bean ice cream.", price:650, category:"Dessert", dietary:["popular"], image: "https://images.unsplash.com/photo-1624353335566-31b1d1bc4476?auto=format&fit=crop&w=600&q=70"},
-  {id:"mango-sorbet", name:"Tropical Mango Sorbet", nameAm:"ማንጎ ሶርቤት", description:"Refreshing, dairy-free mango sorbet with fresh mint.", price:450, category:"Dessert", dietary:["vegan"], image: "https://images.unsplash.com/photo-1505394033323-424e6221e33d?auto=format&fit=crop&w=600&q=70"}
+  {id:"mango-sorbet", name:"Tropical Mango Sorbet", nameAm:"ማንጎ ሶርቤት", description:"Refreshing, dairy-free mango sorbet with fresh mint.", price:450, category:"Dessert", dietary:["vegan"], image: "https://images.unsplash.com/photo-1505394033323-424e6221e33d?auto=format&fit=crop&w=600&q=70"},
+  {id:"atklit-wot", name:"Atklit wot", nameAm:"አትክልት ወጥ", description:"A colorful mix of cabbage, carrots, and potatoes sautéed with turmeric.", price:580, category:"Vegetarian", dietary:["vegan"], image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663887810301/Atklit-wot.jpg"},
+  {id:"beyaynetu", name:"Beyaynet", nameAm:"በያይነቱ", description:"A grand assortment of our finest vegetarian stews served on a large injera.", price:1300, category:"Vegetarian", dietary:["vegan", "popular"], image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663887810301/Beyaynet.jpg"},
+  {id:"chechebsa", name:"Chechebsa", nameAm:"ጨጨብሳ", description:"Shredded flatbread (kitcha) with spiced butter (niter kibbeh) and honey.", price:680, category:"Breakfast", dietary:[], image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663887810301/Chechebsa.jpg"}
 ];

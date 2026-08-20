@@ -429,7 +429,7 @@ $("#loginForm").addEventListener("submit",async e=>{
   }
 });
 
-onAuthStateChanged(auth,user=>{const label=$("#adminLoginButton .menu-option-label") || $("#adminLoginButton");if(label)label.textContent=user && !user.isAnonymous ? "Dashboard" : t("admin");});
+onAuthStateChanged(auth,user=>{const label=$("#adminLoginButton .menu-option-label");if(label)label.textContent=user && !user.isAnonymous ? "Dashboard" : t("admin");});
 $("#year").textContent=new Date().getFullYear();
 applyLanguage();
 renderCategories();
