@@ -297,6 +297,232 @@
   transition: all 0.2s ease;
 }
 
+.order-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.order-card-top h3 {
+  margin: 0 0 4px;
+  font-size: 1.25rem;
+  color: #fff;
+}
+
+.order-card-top p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.status-pill {
+  padding: 4px 12px;
+  border-radius: 100px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.status-pill.status-pending {
+  background: rgba(255, 102, 0, 0.15) !important;
+  color: var(--orange) !important;
+}
+
+.status-pill.status-preparing {
+  background: rgba(255, 180, 0, 0.15) !important;
+  color: #ffb400 !important;
+}
+
+.status-pill.status-completed {
+  background: rgba(47, 199, 115, 0.15) !important;
+  color: #2fc773 !important;
+}
+
+.order-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.item-line {
+  font-size: 0.95rem;
+  color: #eee;
+}
+
+.order-total {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  font-size: 1.1rem;
+}
+
+.order-total strong {
+  color: var(--orange);
+}
+
+.order-notes {
+  padding: 12px;
+  background: rgba(255, 102, 0, 0.05);
+  border-radius: 12px;
+  font-size: 0.85rem;
+  color: var(--orange);
+  border-left: 3px solid var(--orange);
+}
+
+.order-card-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.next-action {
+  width: 100%;
+  padding: 14px !important;
+  border-radius: 14px !important;
+  border: 0 !important;
+  font-weight: 700 !important;
+  font-size: 1rem !important;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.2s;
+  background: var(--white) !important;
+  color: var(--dark) !important;
+}
+
+.next-action[data-status="Preparing"] {
+  background: var(--orange) !important;
+  color: #fff !important;
+  box-shadow: 0 8px 20px rgba(255, 102, 0, 0.3);
+}
+
+.next-action[data-status="Completed"] {
+  background: #2fc773 !important;
+  color: #fff !important;
+  box-shadow: 0 8px 20px rgba(47, 199, 115, 0.3);
+}
+
+.order-more {
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+}
+
+.order-more summary {
+  font-size: 0.85rem;
+  color: var(--muted);
+  cursor: pointer;
+  font-weight: 600;
+  padding: 4px 0;
+}
+
+.order-more-body {
+  padding-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.price-adjustment label {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.adjustment-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.price-input {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 8px !important;
+  padding: 8px 12px !important;
+  color: #fff !important;
+}
+
+.adj-btn {
+  padding: 8px 12px !important;
+  border-radius: 8px !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid var(--line) !important;
+  color: #fff !important;
+  font-weight: 700 !important;
+  cursor: pointer;
+}
+
+.order-status-actions {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.status-btn-delete {
+  grid-column: span 2;
+  border-color: rgba(255, 80, 80, 0.2) !important;
+  color: #ff5050 !important;
+}
+
+.service-requests-panel {
+  margin-top: 60px;
+  padding-top: 40px;
+  border-top: 1px solid var(--line);
+}
+
+.service-request-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 24px;
+}
+
+.service-request-card {
+  background: rgba(255, 102, 0, 0.05) !important;
+  border: 1px solid rgba(255, 102, 0, 0.2) !important;
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: all 0.2s;
+}
+
+.service-request-card:hover {
+  background: rgba(255, 102, 0, 0.08) !important;
+  transform: translateY(-2px);
+}
+
+.service-request-card h3 {
+  margin: 4px 0;
+  font-size: 1.2rem;
+  color: #fff;
+}
+
+.service-request-card p {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.compact-section-header {
+  margin-bottom: 0 !important;
+  border-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
 .menu-item-card {
   padding: 0 !important;
   overflow: hidden;
