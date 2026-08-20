@@ -1,7 +1,7 @@
 {
-  "name": "EMBER Kitchen Menu",
-  "short_name": "EMBER",
-  "description": "Scan, order, and enjoy your meal at EMBER Kitchen.",
+  "name": "Yoni Burger Menu",
+  "short_name": "YONI BURGER",
+  "description": "Scan, order, and enjoy your meal at Yoni Burger.",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#0b0b0d",
