@@ -751,15 +751,15 @@ dialog.modal > article {
 }
 
 .qr-modal > article.qr-modal-mini {
-  width: 320px !important;
-  padding: 24px !important;
+  width: 400px !important;
+  padding: 32px !important;
   max-height: none !important;
   overflow: visible !important;
   background: #121214 !important;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 24px;
 }
 
 .field-label {
@@ -873,52 +873,52 @@ dialog.modal > article {
   justify-content: center;
 }
 
-/* Mini & Clean QR Card Design */
+/* Mini & Clean QR Card Design - Scaled Up */
 .qr-card-mini {
   background: #fff !important;
   color: #000 !important;
-  padding: 24px;
-  border-radius: 20px;
-  width: 270px;
+  padding: 32px;
+  border-radius: 24px;
+  width: 340px;
   text-align: center;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  box-shadow: 0 15px 45px rgba(0,0,0,0.12);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
+  gap: 20px;
   border: 1px solid #eee;
 }
 
 .qr-mini-logo {
-  width: 44px;
-  height: 44px;
+  width: 54px;
+  height: 54px;
   background: linear-gradient(135deg, #ff8a3d 0%, #ff6600 100%);
   border-radius: 50%;
   display: grid;
   place-items: center;
   font-family: "Playfair Display", serif;
-  font-size: 1.8rem;
+  font-size: 2.2rem;
   font-weight: 900;
   color: #fff;
   transform: rotate(-4deg);
-  box-shadow: 0 4px 12px rgba(255, 102, 0, 0.3);
+  box-shadow: 0 6px 15px rgba(255, 102, 0, 0.3);
 }
 
 .qr-mini-code {
-  padding: 8px;
+  padding: 10px;
   border: 1px solid #f0f0f0;
-  border-radius: 12px;
+  border-radius: 14px;
 }
 
 .qr-mini-code img {
   display: block;
-  width: 200px;
-  height: 200px;
+  width: 260px;
+  height: 260px;
 }
 
 .qr-mini-brand {
   font-family: "Playfair Display", serif;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   font-weight: 800;
   color: #111;
 }
