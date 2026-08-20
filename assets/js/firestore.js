@@ -1,5 +1,5 @@
 import { addDoc, collection, deleteDoc, doc, getDoc, getDocs, onSnapshot, orderBy, query, serverTimestamp, setDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-import { db } from "./firebase.js?v=yoni-speed-67";
+import { db } from "./firebase.js?v=yoni-speed-68";
 
 const trackingRef = id => doc(db, "orderTracking", id);
 
