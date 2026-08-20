@@ -1,24 +1,45 @@
 export const money = value => "Br " + Number(value || 0).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
 export const escapeHtml = value => String(value ?? "").replace(/[&<>'"]/g, char => ({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"}[char]));
+
+// Performance-optimized image loader helper
+const getImg = (id, fallback) => {
+  // Using high-performance Unsplash URLs for common burger/food items
+  const unsplashIds = {
+    "classic-yoni": "sc5sTPMrVfk",
+    "double-cheese": "jh5XyK4Rr3Y",
+    "spicy-ethiopian": "L7E7bd7ZfJg",
+    "truffle-luxury": "N-q-A_T_H7c",
+    "crispy-chicken": "0-M_XJc-Z-U",
+    "veggie-delight": "M7449vYf6q8",
+    "classic-fries": "k51T5qXqG-k",
+    "truffle-fries": "6j_S1n26rW0",
+    "onion-rings": "x0oT1z-r-r0",
+    "ethiopian-coffee": "UpJXobZtBvaFdQrL",
+    "honey-tej": "rulCxpaQvtaOzmoM",
+    "craft-beer": "GSGnXICCpeWHqxxj",
+    "chocolate-lava": "L-2p8f2VvXw",
+    "mango-sorbet": "v-v-v-v-v-v"
+  };
+  
+  if (unsplashIds[id]) {
+    return `https://images.unsplash.com/photo-${unsplashIds[id]}?auto=format&fit=crop&w=600&q=70`;
+  }
+  return fallback;
+};
+
 export const fallbackMenu = [
-  {id:"doro-wat", name:"Doro Wat", description:"The king of Ethiopian stews. Spicy chicken simmered in berbere with a hard-boiled egg.", price:1200, category:"Meat", dietary:["spicy"], image:"https://files.manuscdn.com/user_upload_by_module/session_file/310519663887810301/arFIbdDCvTPedHJC.jpg"},
-  {id:"beef-tibs", name:"Beef Tibs", description:"Tender beef cubes sautéed with onions, rosemary, and jalapeños. Served with injera.", price:950, category:"Meat", dietary:["gluten-free"], image:"https://files.manuscdn.com/user_upload_by_module/session_file/310519663887810301/GVgvLVZXkkszeyCv.jpg"},
-  {id:"kitfo", name:"Kitfo", description:"Minced beef seasoned with mitmita and niter kibbeh. Served lebleb (rare) or raw.", price:1100, category:"Meat", dietary:["spicy"], image:"https://files.manuscdn.com/user_upload_by_module/session_file/310519663887810301/xuceFLDCkZcHUAvv.jpg"},
-  {id:"zilzil-tibs", name:"Zilzil Tibs", description:"Strips of beef sautéed with peppers and spices. A smoky, savory delight.", price:980, category:"Meat", dietary:["gluten-free"], image:"https://files.manuscdn.com/user_upload_by_module/session_file/310519663887810301/jOMXgdhUvCzQvbJg.jpg"},
-  {id:"lega-tibs", name:"Lega Tibs", description:"Mild sautéed beef with green peppers and onions. Perfect for those who prefer less spice.", price:900, category:"Meat", dietary:["gluten-free"], image:"https://files.manuscdn.com/user_upload_by_module/session_file/310519663887810301/npMniUKfKYAJYbvm.jpg"},
-  {id:"gomen-be-siga", name:"Gomen Be Siga", description:"Slow-cooked collard greens with tender beef cubes and traditional spices.", price:850, category:"Meat", dietary:["gluten-free"], image:"https://files.manuscdn.com/user_upload_by_module/session_file/310519663887810301/WrYKXYWvQKJWiZAD.jpg"},
-  {id:"key-wat", name:"Key Wat", description:"A rich, spicy beef stew slow-cooked in a vibrant berbere sauce.", price:880, category:"Meat", dietary:["spicy"], image:"https://files.manuscdn.com/user_upload_by_module/session_file/310519663887810301/vlUZpzBDUBBJIOej.jpg"},
-  {id:"shiro-wat", name:"Shiro Wat", description:"Smooth and savory chickpea stew with garlic, ginger, and traditional spices.", price:650, category:"Vegetarian", dietary:["vegetarian", "vegan"], image:"https://files.manuscdn.com/user_upload_by_module/session_file/310519663887810301/qmcoZnqgazrFyoHZ.jpg"},
-  {id:"misir-wat", name:"Misir Wat", description:"Red lentils simmered in a spicy berbere sauce. A vegetarian staple.", price:700, category:"Vegetarian", dietary:["spicy", "vegan"], image:"https://files.manuscdn.com/user_upload_by_module/session_file/310519663887810301/dwdvFoNtJezlqsMv.jpg"},
-  {id:"kik-alicha", name:"Kik Alicha", description:"Yellow split pea stew cooked with turmeric, garlic, and ginger. Mild and comforting.", price:600, category:"Vegetarian", dietary:["vegan"], image:"https://files.manuscdn.com/user_upload_by_module/session_file/310519663887810301/ucKiOEqxujOcwNUd.jpg"},
-  {id:"gomen", name:"Gomen", description:"Fresh collard greens sautéed with garlic, ginger, and onions.", price:550, category:"Vegetarian", dietary:["vegan"], image:"https://files.manuscdn.com/user_upload_by_module/session_file/310519663887810301/UyHjNuSaIGnmBVjD.jpeg"},
-  {id:"atakilt-wat", name:"Atakilt Wat", description:"A colorful mix of cabbage, carrots, and potatoes sautéed with turmeric.", price:580, category:"Vegetarian", dietary:["vegan"], image:"https://files.manuscdn.com/user_upload_by_module/session_file/310519663887810301/oObtzLbppuztqAWJ.jpg"},
-  {id:"fasolia", name:"Fasolia", description:"Green beans and carrots sautéed with onions and traditional spices.", price:560, category:"Vegetarian", dietary:["vegan"], image:"https://files.manuscdn.com/user_upload_by_module/session_file/310519663887810301/PwOsxpyQYROuDOIg.jpg"},
-  {id:"beyaynetu", name:"Beyaynetu Platter", description:"A grand assortment of our finest vegetarian stews served on a large injera.", price:1300, category:"Vegetarian", dietary:["vegan", "popular"], image:"https://files.manuscdn.com/user_upload_by_module/session_file/310519663887810301/rDvdJOuMaRUmyNPn.jpg"},
-  {id:"firfir", name:"Injera Firfir", description:"Shredded injera mixed with spicy berbere sauce. A classic Ethiopian breakfast.", price:750, category:"Breakfast", dietary:["spicy"], image:"https://files.manuscdn.com/user_upload_by_module/session_file/310519663887810301/ZRZmvDnasVHgJOsa.webp"},
-  {id:"chechebsa", name:"Chechebsa", description:"Shredded flatbread (kitcha) with spiced butter (niter kibbeh) and honey.", price:680, category:"Breakfast", dietary:["vegetarian"], image:"https://files.manuscdn.com/user_upload_by_module/session_file/310519663887810301/geaoiItWcCkQEvwW.jpg"},
-  {id:"ethiopian-coffee", name:"Traditional Coffee", description:"Buna - Authentic clay-pot brewed Ethiopian coffee with incense.", price:250, category:"Drinks", dietary:[], image:"https://files.manuscdn.com/user_upload_by_module/session_file/310519663887810301/UpJXobZtBvaFdQrL.jpg"},
-  {id:"tej", name:"Tej (Honey Wine)", description:"Traditional fermented honey wine with a sweet and potent kick.", price:450, category:"Drinks", dietary:[], image:"https://files.manuscdn.com/user_upload_by_module/session_file/310519663887810301/rulCxpaQvtaOzmoM.jpeg"},
-  {id:"tella", name:"Tella", description:"Traditional Ethiopian home-brewed beer made from grains.", price:350, category:"Drinks", dietary:[], image:"https://files.manuscdn.com/user_upload_by_module/session_file/310519663887810301/GSGnXICCpeWHqxxj.jpg"},
-  {id:"baklava", name:"Honey Baklava", description:"Sweet pastry layers with nuts and Ethiopian honey.", price:400, category:"Dessert", dietary:["vegetarian"], image:"https://files.manuscdn.com/user_upload_by_module/session_file/310519663887810301/hjffoZEgRWNOXnRe.jpg"}
+  {id:"classic-yoni", name:"Classic Yoni Burger", nameAm:"ክላሲክ ዮኒ በርገር", description:"Premium beef patty, house-made Yoni sauce, aged cheddar, and caramelized onions on a brioche bun.", price:850, category:"Burgers", dietary:["popular"], image: getImg("classic-yoni", "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=70")},
+  {id:"double-cheese", name:"Double Cheese Overload", nameAm:"ደብል ቺዝ በርገር", description:"Two 150g beef patties, triple cheddar, pickles, and smoky mustard.", price:1100, category:"Burgers", dietary:[], image: getImg("double-cheese", "https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?auto=format&fit=crop&w=600&q=70")},
+  {id:"spicy-ethiopian", name:"Spicy Ethiopian Twist", nameAm:"ስፓይሲ ኢትዮጵያን ትዊስት", description:"Beef patty infused with berbere spices, jalapeños, and a cool yogurt-lime sauce.", price:920, category:"Burgers", dietary:["spicy"], image: getImg("spicy-ethiopian", "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=600&q=70")},
+  {id:"truffle-luxury", name:"Truffle Luxury Burger", nameAm:"ትረፍል ላክዠሪ በርገር", description:"Black truffle mayo, sautéed wild mushrooms, and swiss cheese.", price:1350, category:"Burgers", dietary:["popular"], image: getImg("truffle-luxury", "https://images.unsplash.com/photo-1596662951482-0c4ba74a6df6?auto=format&fit=crop&w=600&q=70")},
+  {id:"crispy-chicken", name:"Yoni Crispy Chicken", nameAm:"ዮኒ ክሪስፒ ቺክን", description:"Buttermilk fried chicken breast, spicy slaw, and honey mustard.", price:880, category:"Burgers", dietary:[], image: getImg("crispy-chicken", "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=600&q=70")},
+  {id:"veggie-delight", name:"Garden Veggie Burger", nameAm:"የአትክልት በርገር", description:"House-made chickpea and beetroot patty, avocado, and sprouts.", price:750, category:"Burgers", dietary:["vegetarian"], image: getImg("veggie-delight", "https://images.unsplash.com/photo-1520072959219-c595dc870360?auto=format&fit=crop&w=600&q=70")},
+  {id:"classic-fries", name:"Golden Sea Salt Fries", nameAm:"ክላሲክ ችፕስ", description:"Hand-cut potatoes, double-fried for maximum crunch.", price:350, category:"Sides", dietary:["popular"], image: getImg("classic-fries", "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=600&q=70")},
+  {id:"truffle-fries", name:"Truffle Parmesan Fries", nameAm:"ትረፍል ችፕስ", description:"Tossed in truffle oil and aged parmesan cheese.", price:550, category:"Sides", dietary:["vegetarian"], image: getImg("truffle-fries", "https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?auto=format&fit=crop&w=600&q=70")},
+  {id:"onion-rings", name:"Beer-Battered Onion Rings", nameAm:"ኦኒየን ሪንግስ", description:"Giant rings served with a spicy dipping sauce.", price:450, category:"Sides", dietary:["vegetarian"], image: getImg("onion-rings", "https://images.unsplash.com/photo-1639146175554-825f9ff88814?auto=format&fit=crop&w=600&q=70")},
+  {id:"ethiopian-coffee", name:"Yoni Craft Coffee", nameAm:"የዮኒ ቡና", description:"Traditional Ethiopian coffee beans, medium roast, served black or with milk.", price:250, category:"Drinks", dietary:[], image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663887810301/UpJXobZtBvaFdQrL.jpg"},
+  {id:"honey-tej", name:"Premium Honey Tej", nameAm:"ፕሪሚየም የማር ጠጅ", description:"Artisanal Ethiopian honey wine, sweet and refreshing.", price:550, category:"Drinks", dietary:[], image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663887810301/rulCxpaQvtaOzmoM.jpeg"},
+  {id:"craft-beer", name:"Local Craft Beer", nameAm:"የሀገር ውስጥ ቢራ", description:"Crisp lager from local Ethiopian breweries.", price:400, category:"Drinks", dietary:[], image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663887810301/GSGnXICCpeWHqxxj.jpg"},
+  {id:"chocolate-lava", name:"Molten Chocolate Lava", nameAm:"ቾኮሌት ላቫ ኬክ", description:"Warm chocolate cake with a gooey center, served with vanilla bean ice cream.", price:650, category:"Dessert", dietary:["popular"], image: "https://images.unsplash.com/photo-1624353335566-31b1d1bc4476?auto=format&fit=crop&w=600&q=70"},
+  {id:"mango-sorbet", name:"Tropical Mango Sorbet", nameAm:"ማንጎ ሶርቤት", description:"Refreshing, dairy-free mango sorbet with fresh mint.", price:450, category:"Dessert", dietary:["vegan"], image: "https://images.unsplash.com/photo-1505394033323-424e6221e33d?auto=format&fit=crop&w=600&q=70"}
 ];

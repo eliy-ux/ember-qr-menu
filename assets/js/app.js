@@ -1,7 +1,7 @@
 import { signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-import { createOrder, createServiceRequest, watchOrder, watchMenu, saveRating } from "./firestore.js?v=ember-features-49";
+import { createOrder, createServiceRequest, watchOrder, watchMenu, saveRating } from "./firestore.js?v=yoni-speed-50";
 import { fallbackMenu, money, escapeHtml } from "./utils.js";
-import { auth } from "./firebase.js?v=ember-auth-49";
+import { auth } from "./firebase.js?v=yoni-speed-50";
 
 const $ = selector => document.querySelector(selector);
 const state = {menu:fallbackMenu, category:"All", search:"", language:localStorage.getItem("ember-language") || "en", cart:JSON.parse(localStorage.getItem("ember-cart") || "[]"), orderUnsubscribe:null, activeOrderId:null, lastOrderStatus:null, installPrompt:null};
@@ -17,7 +17,18 @@ const getDeviceId = () => {
 };
 const saveCart = () => localStorage.setItem("ember-cart", JSON.stringify(state.cart));
 const toast = message => { const node=$("#toast"); node.textContent=message; node.classList.add("show"); clearTimeout(toast.timer); toast.timer=setTimeout(()=>node.classList.remove("show"),3200); };
-const image = item => item.image || "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=85";
+const image = item => {
+  if (!item.image) return "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=600&q=70";
+  
+  if (item.image.includes("unsplash.com")) {
+    const url = new URL(item.image);
+    url.searchParams.set("w", "600");
+    url.searchParams.set("q", "70");
+    url.searchParams.set("auto", "format");
+    return url.toString();
+  }
+  return item.image;
+};
 
 const translations = { 
   en: {
@@ -97,6 +108,7 @@ function renderMenu(){
       <div class="food-info">
         ${isPopular ? '<span class="badge badge-popular">Popular</span>' : ''}
         <h3>${escapeHtml(item.name)}</h3>
+        ${item.nameAm ? `<div class="name-am">${escapeHtml(item.nameAm)}</div>` : ''}
         <p>${escapeHtml(item.description)}</p>
         <div class="card-bottom">
           <span class="price">${money(item.price)}</span>
@@ -119,14 +131,18 @@ function renderCart(){
   const checkoutTotal = $("#checkoutButtonTotal");
   if(checkoutTotal) checkoutTotal.textContent = count > 0 ? `· ${money(total)}` : "";
 
-  $("#cartItems").innerHTML=state.cart.length?state.cart.map(line=>`<article class="cart-row"><img src="${image(line)}" alt=""><div><h3>${escapeHtml(line.name)}</h3><p>${money(line.price)}</p><div class="quantity-control"><button class="quantity-button" data-quantity="${line.id}" data-step="-1" aria-label="Decrease">−</button><b>${line.quantity}</b><button class="quantity-button" data-quantity="${line.id}" data-step="1" aria-label="Increase">+</button></div></div><button class="remove-button" data-remove="${line.id}">Remove</button></article>`).join(""):`<div class="empty-cart"><strong>${t("emptyOrder")}</strong>${t("addSomething")}</div>`; 
+  $("#cartItems").innerHTML=state.cart.length?state.cart.map(line=>`<article class="cart-row"><img src="${image(line)}" alt=""><div><h3>${escapeHtml(line.name)}</h3>
+${line.nameAm ? `<div class="name-am-cart">${escapeHtml(line.nameAm)}</div>` : ''}
+<p>${money(line.price)}</p><div class="quantity-control"><button class="quantity-button" data-quantity="${line.id}" data-step="-1" aria-label="Decrease">−</button><b>${line.quantity}</b><button class="quantity-button" data-quantity="${line.id}" data-step="1" aria-label="Increase">+</button></div></div><button class="remove-button" data-remove="${line.id}">Remove</button></article>`).join(""):`<div class="empty-cart"><strong>${t("emptyOrder")}</strong>${t("addSomething")}</div>`; 
 }
 
 function addToCart(id){ const item=state.menu.find(i=>i.id===id); if(!item)return; const line=state.cart.find(i=>i.id===id); if(line)line.quantity++;else state.cart.push({...item,quantity:1}); saveCart();renderCart();toast(`${item.name} added to your order`); }
 function changeQuantity(id,step){const line=state.cart.find(i=>i.id===id);if(!line)return;line.quantity+=step;if(line.quantity<1)state.cart=state.cart.filter(i=>i.id!==id);saveCart();renderCart();}
 function openCart(){ $("#cartDrawer").classList.add("open"); $("#cartDrawer").setAttribute("aria-hidden","false"); $("#scrim").hidden=false;document.body.style.overflow="hidden"; }
 function closeCart(){ $("#cartDrawer").classList.remove("open"); $("#cartDrawer").setAttribute("aria-hidden","true"); $("#scrim").hidden=true;document.body.style.overflow=""; }
-function showDetail(id){const item=state.menu.find(i=>i.id===id);if(!item)return; $("#itemModalBody").innerHTML=`<img class="modal-image" src="${image(item)}" alt="${escapeHtml(item.name)}"><p class="eyebrow">${escapeHtml(item.category)}</p><h2>${escapeHtml(item.name)}</h2><p>${escapeHtml(item.description)}</p><span class="modal-price">${money(item.price)}</span><button class="primary-button" data-add="${item.id}" data-close-after-add="true">Add to order</button>`;$("#itemModal").showModal();}
+function showDetail(id){const item=state.menu.find(i=>i.id===id);if(!item)return; $("#itemModalBody").innerHTML=`<img class="modal-image" src="${image(item)}" alt="${escapeHtml(item.name)}"><p class="eyebrow">${escapeHtml(item.category)}</p><h2>${escapeHtml(item.name)}</h2>
+${item.nameAm ? `<div class="name-am-detail">${escapeHtml(item.nameAm)}</div>` : ''}
+<p>${escapeHtml(item.description)}</p><span class="modal-price">${money(item.price)}</span><button class="primary-button" data-add="${item.id}" data-close-after-add="true">Add to order</button>`;$("#itemModal").showModal();}
 
 function applyLanguage(){
   const nodes={
@@ -212,18 +228,18 @@ async function notifyServingOnDevice(order){
   const table = order?.tableNumber || "your table";
   const options = {
     body: `Your order for Table ${table} is ready and being served!`,
-    icon: "assets/icons/ember.svg",
-    badge: "assets/icons/ember.svg",
+    icon: "assets/icons/yoni.svg",
+    badge: "assets/icons/yoni.svg",
     tag: `ember-order-${order?.orderId || order?.id || state.activeOrderId}`,
     renotify: true
   };
   try{
     if("serviceWorker" in navigator){
       const registration = await navigator.serviceWorker.ready;
-      if(registration?.showNotification){await registration.showNotification("EMBER: Order Serving", options);return;}
+      if(registration?.showNotification){await registration.showNotification("YONI BURGER: Order Serving", options);return;}
     }
   }catch(error){console.warn("Service-worker notification unavailable",error);}
-  try{new Notification("EMBER: Order Serving", options);}catch(error){console.warn("Browser notification unavailable",error);}
+  try{new Notification("YONI BURGER: Order Serving", options);}catch(error){console.warn("Browser notification unavailable",error);}
 }
 
 function registerPwa(){

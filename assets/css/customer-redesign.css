@@ -1,6 +1,7 @@
 /* EMBER customer-side premium redesign v1 */
 :root {
-  --ember-orange: #ff6600;
+  --yoni-orange: #ff6600;
+  --ember-orange: var(--yoni-orange);
   --ember-orange-light: #ff8a3d;
   --ember-orange-soft: var(--ember-orange-light);
   --ember-cream: #fff7ed;
@@ -73,19 +74,19 @@ body::before {
 .logo-square {
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #ff8a3d 0%, #ff6600 100%); /* Original Cyber-Orange */
-  border-radius: 10px;
+  background: linear-gradient(135deg, #ff8a3d 0%, #ff6600 100%);
+  border-radius: 12px;
   display: grid;
   place-items: center;
-  font-family: "Playfair Display", serif;
-  font-size: 1.6rem;
+font-family: "Playfair Display", serif;
+  font-size: 1.8rem;
   font-weight: 900;
   color: #fff;
   box-shadow: 0 4px 20px rgba(255, 102, 0, 0.58), inset 0 0 15px rgba(255, 255, 255, 0.1);
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
-  transform: rotate(-4deg); /* Permanent artistic rotation */
+  transform: rotate(-4deg);
 }
 
 .logo-square::after {
@@ -178,7 +179,7 @@ body::before {
   background: rgba(28, 28, 30, 0.85);
   backdrop-filter: blur(28px) saturate(180%);
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 102, 0, 0.1);
-  animation: ember-menu-in .25s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: yoni-menu-in .25s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 .preferences-menu[hidden] { display: none; }
 .menu-option {
@@ -198,7 +199,7 @@ body::before {
 .menu-option:hover { background: rgba(255,102,0,.14); color: var(--ember-orange-light); transform: translateX(2px); }
 .menu-option-icon { display: grid; place-items: center; width: 26px; height: 26px; border: 1px solid rgba(255,255,255,.12); border-radius: 9px; color: var(--ember-orange-light); font-size: .8rem; }
 .menu-option-label { font-size: .86rem; font-weight: 700; }
-@keyframes ember-menu-in { from { opacity: 0; transform: translateY(-5px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes yoni-menu-in { from { opacity: 0; transform: translateY(-5px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
 
 
 
@@ -396,7 +397,7 @@ body::before {
 .contact-item svg { color: var(--ember-orange); flex-shrink: 0; opacity: 0.8; }
 a.contact-item:hover { color: var(--ember-orange-light); transform: translateX(5px); }
 .rating-stars { display: flex; gap: 8px; margin-bottom: 12px; }
-.rating-stars button { background: none; border: none; font-size: 1.6rem; color: rgba(255,255,255,.15); cursor: pointer; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); padding: 0; }
+.rating-stars button { background: none; border: none; font-size: 1.8rem; color: rgba(255,255,255,.15); cursor: pointer; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); padding: 0; }
 .rating-stars button:hover { transform: scale(1.3) rotate(15deg); color: var(--ember-orange-light); }
 .rating-stars button.active { color: var(--ember-orange); text-shadow: 0 0 15px rgba(255,102,0,0.5); }
 .map-container { overflow: hidden; border: 1px solid rgba(255,255,255,0.1); border-radius: 18px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
@@ -495,6 +496,32 @@ a.contact-item:hover { color: var(--ember-orange-light); transform: translateX(5
   .cart-drawer #closeCartButton {
     width: 40px;
     height: 40px;
-    font-size: 1.6rem;
+    font-size: 1.8rem;
   }
+}
+
+/* Bilingual Menu Name Styling */
+.name-am {
+  font-size: 0.85rem;
+  color: var(--ember-orange-light);
+  margin-top: -2px;
+  margin-bottom: 8px;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.name-am-cart {
+  font-size: 0.75rem;
+  color: var(--ember-orange-light);
+  margin-top: -4px;
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+
+.name-am-detail {
+  font-size: 1.1rem;
+  color: var(--ember-orange-light);
+  margin-top: -6px;
+  margin-bottom: 12px;
+  font-weight: 500;
 }

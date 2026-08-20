@@ -1,6 +1,6 @@
-# EMBER QR Restaurant Menu
+# YONI BURGER Premium QR Menu
 
-A responsive, vanilla HTML/CSS/JavaScript restaurant ordering app. It includes a customer menu, cart, Firestore checkout, Firebase Authentication admin login, and a live Firestore order dashboard.
+A high-performance, premium vanilla HTML/CSS/JavaScript restaurant ordering PWA. It includes a customer menu, cart, Firestore checkout, Firebase Authentication admin login, and a live Firestore order dashboard.
 
 ## Run it
 

@@ -265,6 +265,7 @@ function renderMenuItems() {
           <img src="${escapeHtml(item.image || "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=85")}" alt="${escapeHtml(item.name)}">
           <div class="menu-item-info">
             <h3>${escapeHtml(item.name)}</h3>
+	            ${item.nameAm ? `<div class="name-am-admin">${escapeHtml(item.nameAm)}</div>` : ''}
             <p>${escapeHtml(item.description || "")}</p>
             <div class="menu-item-meta">
               <span class="status-pill">${escapeHtml(item.category || "Uncategorised")}</span>
@@ -332,6 +333,7 @@ function openMenuItemModal(item) {
   $("#menuItemModalTitle").textContent = item ? "Edit menu item" : "Add menu item";
   $("#menuItemId").value = item?.id || "";
   $("#menuItemName").value = item?.name || "";
+  $("#menuItemNameAm").value = item?.nameAm || "";
   $("#menuItemDescription").value = item?.description || "";
   $("#menuItemPrice").value = item?.price ?? "";
   $("#menuItemCategory").value = item?.category || "";
@@ -474,10 +476,27 @@ document.addEventListener("click", async event => {
     target.disabled = true;
     target.textContent = "Importing…";
     try {
-      await Promise.all(fallbackMenu.map(({ name, description, price, category, image, dietary }) => 
-        addMenuItem({ name, description, price, category, image, dietary, outOfStock: false })
-      ));
-      toast("Starter menu imported. You can now edit every dish.");
+      await Promise.all(fallbackMenu.map(async (fallbackItem) => {
+        const existing = state.menu.find(m => m.name === fallbackItem.name);
+        const itemData = { 
+          name: fallbackItem.name, 
+          nameAm: fallbackItem.nameAm || "", 
+          description: fallbackItem.description, 
+          price: fallbackItem.price, 
+          category: fallbackItem.category, 
+          image: fallbackItem.image, 
+          dietary: fallbackItem.dietary, 
+          outOfStock: false 
+        };
+        if (existing) {
+          return updateMenuItem(existing.id, itemData);
+        } else {
+          return addMenuItem(itemData);
+        }
+      }));
+      toast("Menu updated with latest translations and items.");
+      target.disabled = false;
+      target.textContent = target.classList.contains("primary-button") ? "Import starter menu" : "Sync translations";
     } catch (error) {
       toast(error?.code === "permission-denied" ? "Firestore blocked the import. Check the security rules." : `Import failed (${error?.code || "unknown error"}).`);
       console.error(error);
@@ -551,6 +570,7 @@ $("#menuItemForm").addEventListener("submit", async event => {
   const button = event.submitter || $("#menuItemForm button[type=submit]");
   const id = $("#menuItemId").value.trim();
   const name = $("#menuItemName").value.trim();
+  const nameAm = $("#menuItemNameAm").value.trim();
   const description = $("#menuItemDescription").value.trim();
   const price = Number($("#menuItemPrice").value);
   const category = $("#menuItemCategory").value.trim();
@@ -571,6 +591,7 @@ $("#menuItemForm").addEventListener("submit", async event => {
   
   const item = {
     name,
+    nameAm,
     description,
     price,
     category,
@@ -636,8 +657,8 @@ function renderQrCode(baseUrl) {
   const qrSrc = `https://api.qrserver.com/v1/create-qr-code/?size=600x600&margin=8&data=${encodeURIComponent(baseUrl)}`;
   const html = `
     <article class="qr-card qr-card-single">
-      <img src="${qrSrc}" alt="EMBER menu QR code" width="300" height="300">
-      <strong>EMBER Menu</strong>
+      <img src="${qrSrc}" alt="YONI BURGER menu QR code" width="300" height="300">
+      <strong>YONI BURGER Menu</strong>
       <span>Scan to order</span>
       <a href="${escapeHtml(baseUrl)}" target="_blank" rel="noopener">${escapeHtml(baseUrl)}</a>
     </article>

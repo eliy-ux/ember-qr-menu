@@ -8,6 +8,6 @@
   "theme_color": "#ff6600",
   "orientation": "portrait",
   "icons": [
-    { "src": "assets/icons/ember.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+    { "src": "assets/icons/yoni.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
   ]
 }
