@@ -313,6 +313,8 @@ body::before {
   overflow: hidden;
   backdrop-filter: blur(8px);
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
 }
 
 .add-button .btn-text { display: none; }
