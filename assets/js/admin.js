@@ -657,10 +657,13 @@ function renderQrCode(baseUrl) {
   const qrSrc = `https://api.qrserver.com/v1/create-qr-code/?size=600x600&margin=8&data=${encodeURIComponent(baseUrl)}`;
   const html = `
     <article class="qr-card qr-card-single">
+      <div class="qr-card-logo">Y</div>
       <img src="${qrSrc}" alt="YONI BURGER menu QR code" width="300" height="300">
-      <strong>YONI BURGER Menu</strong>
-      <span>Scan to order</span>
-      <a href="${escapeHtml(baseUrl)}" target="_blank" rel="noopener">${escapeHtml(baseUrl)}</a>
+      <div class="qr-card-info">
+        <strong>YONI BURGER</strong>
+        <span>Scan to view menu & order</span>
+        <a href="${escapeHtml(baseUrl)}" target="_blank" rel="noopener">${escapeHtml(baseUrl)}</a>
+      </div>
     </article>
   `;
   $("#qrGrid").innerHTML = html;

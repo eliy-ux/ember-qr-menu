@@ -1,4 +1,4 @@
-/* YONI BURGER Admin Dashboard Framework v73 - Premium Staff Edition */
+/* YONI BURGER Admin Dashboard Framework v74 - Boutique Luxury Edition */
 
 :root {
   --orange: #ff6600;
@@ -452,36 +452,95 @@ dialog, .modal {
   border-color: var(--orange) !important;
 }
 
-/* QR Code scannability */
+/* QR Code Section & Card */
+.qr-generator-row {
+  display: flex;
+  gap: 16px;
+  align-items: flex-end;
+  margin-bottom: 40px;
+}
+
+.qr-generator-row .field-label {
+  flex: 1;
+  margin: 0;
+}
+
+#qrGrid {
+  display: flex;
+  justify-content: center;
+  padding: 40px 0;
+}
+
 .qr-card {
   background: #fff !important;
-  padding: 30px !important;
-  border-radius: 20px !important;
+  padding: 40px !important;
+  border-radius: 24px !important;
   color: #000 !important;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  gap: 20px;
+  width: 380px !important;
+  max-width: 100%;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  text-align: center;
 }
 
-.qr-card img {
-  width: 260px !important;
-  height: 260px !important;
+.qr-card-logo {
+  width: 60px;
+  height: 60px;
+  background: var(--orange) !important;
+  border-radius: 50% !important;
+  display: grid;
+  place-items: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 2.4rem;
+  font-weight: 900;
+  color: #fff !important;
   margin-bottom: 10px;
 }
 
-.qr-card strong {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.5rem;
+.qr-card img {
+  width: 280px !important;
+  height: 280px !important;
+  display: block;
 }
 
-.qr-card a {
+.qr-card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.qr-card-info strong {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  letter-spacing: -0.02em;
+}
+
+.qr-card-info span {
+  font-size: 1rem;
+  opacity: 0.7;
+}
+
+.qr-card-info a {
   color: var(--orange) !important;
   text-decoration: none;
-  font-size: 0.8rem;
-  word-break: break-all;
-  text-align: center;
+  font-size: 0.85rem;
+  margin-top: 10px;
+  font-weight: 500;
+}
+
+/* Fix Print Button */
+#printQrButton {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #fff !important;
+  border-radius: 12px !important;
+  padding: 10px 20px !important;
+  font-weight: 700 !important;
+  cursor: pointer;
+  margin-bottom: 20px;
 }
 
 @media (max-width: 900px) {
@@ -493,5 +552,18 @@ dialog, .modal {
     height: 70px;
     flex-direction: row;
     background: #0a0a0c !important;
+  }
+}
+
+@media print {
+  .admin-sidebar, .admin-header, .qr-generator-row, #qrStatus, #printQrButton, .admin-nav {
+    display: none !important;
+  }
+  .admin-main {
+    padding: 0 !important;
+  }
+  .qr-card {
+    box-shadow: none !important;
+    margin: 0 auto;
   }
 }

@@ -156,16 +156,15 @@
           </div>
         </div>
         
-        <div class="qr-tools">
-          <form id="qrForm">
-            <label class="field-label">Menu URL (use your public or deployed URL)
-              <input id="qrBaseUrl" type="url" placeholder="https://your-menu.com/index.html" required>
-            </label>
-            <button class="primary-button" type="submit">Generate QR code ↗</button>
-          </form>
-          <p class="muted" id="qrStatus" style="margin-top:16px;font-size:0.85rem">Your menu link is prefilled from this preview.</p>
-          <button class="text-button" id="printQrButton" type="button" style="margin-top:12px" hidden>Print QR sheet</button>
-        </div>
+        <form id="qrForm" class="qr-generator-row">
+          <label class="field-label">
+            <span>Menu URL (use your public or deployed URL)</span>
+            <input id="qrBaseUrl" type="url" placeholder="https://your-menu.com/index.html" required>
+          </label>
+          <button class="primary-button" type="submit">Generate QR code ↗</button>
+        </form>
+        <div class="muted" id="qrStatus" style="margin-top:16px;font-size:0.85rem">Your menu link is prefilled from this preview.</div>
+        <button class="secondary-button" id="printQrButton" type="button" style="margin-top:12px" hidden>Print QR sheet</button>
 
         <div class="qr-grid" id="qrGrid"></div>
       </section>
@@ -226,6 +225,6 @@
   </dialog>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <script type="module" src="assets/js/admin.js?v=yoni-speed-73"></script>
+  <script type="module" src="assets/js/admin.js?v=yoni-speed-74"></script>
 </body>
 </html>
