@@ -1,18 +1,18 @@
-const CACHE_NAME = "yoni-burger-v55";
+const CACHE_NAME = "yoni-burger-v60";
 const APP_SHELL = [
   "./",
   "./index.html",
-  "./assets/css/style.css?v=yoni-speed-55",
-  "./assets/css/customer-redesign.css?v=yoni-speed-55",
-  "./assets/css/animations.css?v=yoni-speed-55",
-  "./assets/css/responsive.css?v=yoni-speed-55",
-  "./assets/js/app.js?v=yoni-speed-55",
-  "./assets/js/firebase.js?v=yoni-speed-55",
-  "./assets/js/firestore.js?v=yoni-speed-55",
+  "./assets/css/style.css?v=yoni-speed-60",
+  "./assets/css/customer-redesign.css?v=yoni-speed-60",
+  "./assets/css/animations.css?v=yoni-speed-60",
+  "./assets/css/responsive.css?v=yoni-speed-60",
+  "./assets/js/app.js?v=yoni-speed-60",
+  "./assets/js/firebase.js?v=yoni-speed-60",
+  "./assets/js/firestore.js?v=yoni-speed-60",
   "./assets/js/config.js",
   "./assets/js/utils.js",
   "./manifest.webmanifest",
-  "./assets/icons/yoni-circle.png"
+  "./assets/icons/yoni.svg"
 ];
 
 const debugLog = (...args) => console.log("%c[YONI-SPEED]", "color: #ff6600; font-weight: bold;", ...args);
