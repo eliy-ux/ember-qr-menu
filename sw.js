@@ -1,14 +1,14 @@
-const CACHE_NAME = "yoni-burger-v52";
+const CACHE_NAME = "yoni-burger-v55";
 const APP_SHELL = [
   "./",
   "./index.html",
-  "./assets/css/style.css?v=yoni-speed-52",
-  "./assets/css/customer-redesign.css?v=yoni-speed-52",
-  "./assets/css/animations.css?v=yoni-speed-52",
-  "./assets/css/responsive.css?v=yoni-speed-52",
-  "./assets/js/app.js?v=yoni-speed-52",
-  "./assets/js/firebase.js?v=yoni-speed-52",
-  "./assets/js/firestore.js?v=yoni-speed-52",
+  "./assets/css/style.css?v=yoni-speed-55",
+  "./assets/css/customer-redesign.css?v=yoni-speed-55",
+  "./assets/css/animations.css?v=yoni-speed-55",
+  "./assets/css/responsive.css?v=yoni-speed-55",
+  "./assets/js/app.js?v=yoni-speed-55",
+  "./assets/js/firebase.js?v=yoni-speed-55",
+  "./assets/js/firestore.js?v=yoni-speed-55",
   "./assets/js/config.js",
   "./assets/js/utils.js",
   "./manifest.webmanifest",
