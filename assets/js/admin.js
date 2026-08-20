@@ -656,22 +656,41 @@ document.addEventListener("keypress", async event => {
 function renderQrCode(baseUrl) {
   const qrSrc = `https://api.qrserver.com/v1/create-qr-code/?size=600x600&margin=8&data=${encodeURIComponent(baseUrl)}`;
   const html = `
-    <article class="qr-card qr-card-single">
-      <div class="qr-card-logo">Y</div>
-      <img src="${qrSrc}" alt="YONI BURGER menu QR code" width="300" height="300">
-      <div class="qr-card-info">
-        <strong>YONI BURGER</strong>
-        <span>Scan to view menu & order</span>
-        <a href="${escapeHtml(baseUrl)}" target="_blank" rel="noopener">${escapeHtml(baseUrl)}</a>
+    <article class="qr-card-luxury">
+      <div class="qr-card-inner">
+        <div class="qr-card-header">
+          <div class="qr-luxury-logo">Y</div>
+          <div class="qr-luxury-brand">YONI BURGER</div>
+        </div>
+        
+        <div class="qr-code-frame">
+          <img src="${qrSrc}" alt="YONI BURGER menu QR code" width="300" height="300">
+        </div>
+        
+        <div class="qr-card-footer">
+          <div class="qr-instruction">Scan to view menu & order</div>
+          <div class="qr-url">${escapeHtml(baseUrl)}</div>
+        </div>
       </div>
     </article>
   `;
   $("#qrGrid").innerHTML = html;
   $("#qrModalBody").innerHTML = html;
   $("#printQrButton").hidden = false;
-  $("#qrStatus").textContent = "QR code ready to print or place on a table.";
+  $("#qrStatus").textContent = "Premium QR tent ready.";
   $("#qrModal").showModal();
 }
+
+$("#copyQrLinkButton")?.addEventListener("click", () => {
+  const url = $("#qrBaseUrl").value.trim();
+  if (!url) return;
+  navigator.clipboard.writeText(url).then(() => {
+    toast("Link copied to clipboard");
+  }).catch(err => {
+    console.error("Copy failed", err);
+    toast("Failed to copy link");
+  });
+});
 
 $("#qrForm").addEventListener("submit", event => {
   event.preventDefault();

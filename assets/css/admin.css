@@ -843,12 +843,16 @@ dialog.modal > article {
   border-color: var(--orange) !important;
 }
 
-/* QR Code Section & Card */
+/* QR Code Generator Section */
 .qr-generator-row {
   display: flex;
-  gap: 16px;
+  gap: 15px;
   align-items: flex-end;
-  margin-bottom: 40px;
+  margin-bottom: 25px;
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--line);
+  border-radius: 20px;
 }
 
 .qr-generator-row .field-label {
@@ -857,81 +861,151 @@ dialog.modal > article {
 }
 
 #qrGrid {
+  margin-top: 30px;
   display: flex;
   justify-content: center;
-  padding: 40px 0;
 }
 
-.qr-card {
+/* Luxury QR Card Design */
+.qr-card-luxury {
   background: #fff !important;
-  padding: 40px !important;
-  border-radius: 24px !important;
   color: #000 !important;
+  padding: 40px;
+  border-radius: 28px;
+  width: 380px;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+  position: relative;
+  border: 1px solid #eee;
+}
+
+.qr-card-inner {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
-  width: 380px !important;
-  max-width: 100%;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
-  text-align: center;
+  gap: 24px;
 }
 
-.qr-card-logo {
+.qr-card-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.qr-luxury-logo {
   width: 60px;
   height: 60px;
-  background: var(--orange) !important;
-  border-radius: 50% !important;
+  background: linear-gradient(135deg, #ff8a3d 0%, #ff6600 100%);
+  border-radius: 50%;
   display: grid;
   place-items: center;
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
   font-size: 2.4rem;
   font-weight: 900;
-  color: #fff !important;
-  margin-bottom: 10px;
+  color: #fff;
+  transform: rotate(-6deg);
+  box-shadow: 0 8px 20px rgba(255, 102, 0, 0.3);
 }
 
-.qr-card img {
-  width: 280px !important;
-  height: 280px !important;
+.qr-luxury-brand {
+  font-family: "Playfair Display", serif;
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: #111;
+}
+
+.qr-code-frame {
+  padding: 15px;
+  background: #fff;
+  border: 2px solid #f0f0f0;
+  border-radius: 20px;
+  box-shadow: inset 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.qr-code-frame img {
   display: block;
+  width: 240px;
+  height: 240px;
 }
 
-.qr-card-info {
+.qr-card-footer {
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
 
-.qr-card-info strong {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.8rem;
-  letter-spacing: -0.02em;
+.qr-instruction {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #555;
+  letter-spacing: 0.02em;
 }
 
-.qr-card-info span {
-  font-size: 1rem;
-  opacity: 0.7;
-}
-
-.qr-card-info a {
-  color: var(--orange) !important;
-  text-decoration: none;
-  font-size: 0.85rem;
-  margin-top: 10px;
+.qr-url {
+  font-size: 0.8rem;
+  color: #ff6600;
   font-weight: 500;
+  word-break: break-all;
+  opacity: 0.8;
 }
 
-/* Fix Print Button */
+/* Modal Header Luxury */
+.modal-header-luxury {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.modal-header-luxury .eyebrow {
+  margin-bottom: 8px;
+}
+
+.modal-header-luxury h2 {
+  margin-top: 5px;
+  font-size: 2.2rem;
+  color: #fff;
+}
+
+.qr-preview-container {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.qr-modal-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 30px;
+  width: 100%;
+}
+
+.qr-modal-actions .primary-button,
+.qr-modal-actions .secondary-button {
+  width: 100%;
+  justify-content: center;
+  height: 50px;
+}
+
 #printQrButton {
-  background: rgba(255, 255, 255, 0.05) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  color: #fff !important;
-  border-radius: 12px !important;
-  padding: 10px 20px !important;
-  font-weight: 700 !important;
+  height: 48px;
+  padding: 0 24px;
+  background: var(--orange);
+  color: #fff;
+  border: none;
+  border-radius: 14px;
+  font-weight: 700;
   cursor: pointer;
-  margin-bottom: 20px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#printQrButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(255, 102, 0, 0.4);
 }
 
 @media (max-width: 900px) {
@@ -1071,12 +1145,12 @@ dialog.modal > article {
     gap: 12px;
   }
   
-  .qr-card {
+  .qr-card-luxury {
     padding: 24px !important;
     width: 100% !important;
   }
   
-  .qr-card img {
+  .qr-card-luxury img {
     width: 100% !important;
     height: auto !important;
     max-width: 240px;
@@ -1103,14 +1177,15 @@ dialog.modal > article {
 }
 
 @media print {
-  .admin-sidebar, .admin-header, .qr-generator-row, #qrStatus, #printQrButton, .admin-nav {
+  .admin-sidebar, .admin-header, .qr-generator-row, #qrStatus, #printQrButton, .admin-nav, .qr-modal-actions, .modal-close, .modal-header-luxury {
     display: none !important;
   }
   .admin-main {
     padding: 0 !important;
   }
-  .qr-card {
+  .qr-card-luxury {
     box-shadow: none !important;
     margin: 0 auto;
+    border: none !important;
   }
 }
