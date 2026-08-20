@@ -1,4 +1,4 @@
-/* YONI BURGER Admin Dashboard Framework v72 - Total Darkness Edition */
+/* YONI BURGER Admin Dashboard Framework v73 - Premium Staff Edition */
 
 :root {
   --orange: #ff6600;
@@ -286,6 +286,61 @@
   padding: 20px !important;
 }
 
+.menu-item-info h3 {
+  margin: 0 0 4px;
+  font-size: 1.2rem;
+  color: #fff;
+}
+
+.name-am-admin {
+  color: var(--orange);
+  font-size: 0.9rem;
+  margin-bottom: 12px;
+}
+
+.menu-item-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.price {
+  font-weight: 700;
+  color: #fff;
+  margin-left: auto;
+}
+
+.menu-item-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  padding: 0 20px 20px;
+}
+
+.menu-item-actions .status-btn {
+  padding: 8px !important;
+  font-size: 0.8rem !important;
+  border-radius: 8px !important;
+}
+
+.menu-item-actions .status-btn-cancelled {
+  background: rgba(255, 80, 80, 0.05) !important;
+  border-color: rgba(255, 80, 80, 0.2) !important;
+  color: #ff5050 !important;
+}
+
+.menu-item-actions .status-btn-ready {
+  background: rgba(47, 199, 115, 0.05) !important;
+  border-color: rgba(47, 199, 115, 0.2) !important;
+  color: #2fc773 !important;
+}
+
+.menu-item-actions button[data-delete-item] {
+  grid-column: span 2;
+  margin-top: 4px;
+}
+
 .search-bar {
   background: rgba(255, 255, 255, 0.03) !important;
   border: 1px solid rgba(255, 255, 255, 0.08) !important;
@@ -306,9 +361,10 @@
 }
 
 /* Button Overrides */
-button, .primary-button, .secondary-button, .admin-action-btn {
+button, .primary-button, .secondary-button, .admin-action-btn, .status-btn {
   appearance: none;
   -webkit-appearance: none;
+  font-family: inherit;
 }
 
 .primary-button {
@@ -328,6 +384,16 @@ button, .primary-button, .secondary-button, .admin-action-btn {
   border-radius: 12px !important;
   padding: 10px 16px !important;
   font-weight: 700 !important;
+  cursor: pointer;
+}
+
+.status-btn {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #fff !important;
+  border-radius: 8px !important;
+  padding: 8px 12px !important;
+  font-weight: 600 !important;
   cursor: pointer;
 }
 
@@ -387,10 +453,35 @@ dialog, .modal {
 }
 
 /* QR Code scannability */
-#qrModalBody canvas {
+.qr-card {
   background: #fff !important;
-  padding: 16px !important;
-  border-radius: 12px !important;
+  padding: 30px !important;
+  border-radius: 20px !important;
+  color: #000 !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+
+.qr-card img {
+  width: 260px !important;
+  height: 260px !important;
+  margin-bottom: 10px;
+}
+
+.qr-card strong {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+}
+
+.qr-card a {
+  color: var(--orange) !important;
+  text-decoration: none;
+  font-size: 0.8rem;
+  word-break: break-all;
+  text-align: center;
 }
 
 @media (max-width: 900px) {

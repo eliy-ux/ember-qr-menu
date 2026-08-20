@@ -1,6 +1,6 @@
-import { auth } from "./firebase.js?v=yoni-speed-72";
+import { auth } from "./firebase.js?v=yoni-speed-73";
 import { signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-import { watchOrders, changeOrderStatus, deleteOrder, watchMenu, addMenuItem, updateMenuItem, deleteMenuItem, watchServiceRequests, changeServiceRequestStatus, getUserRole, resetDailyStats } from "./firestore.js?v=yoni-speed-72";
+import { watchOrders, changeOrderStatus, deleteOrder, watchMenu, addMenuItem, updateMenuItem, deleteMenuItem, watchServiceRequests, changeServiceRequestStatus, getUserRole, resetDailyStats } from "./firestore.js?v=yoni-speed-73";
 import { money, escapeHtml, fallbackMenu } from "./utils.js";
 
 const $ = selector => document.querySelector(selector);
