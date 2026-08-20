@@ -415,6 +415,54 @@ button, .primary-button, .secondary-button, .admin-action-btn, .status-btn {
   color: #ff5050 !important;
 }
 
+.text-button {
+  background: transparent !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: #fff !important;
+  padding: 8px 16px !important;
+  border-radius: 10px !important;
+  font-weight: 600 !important;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.text-button:hover {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.icon-button {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #fff !important;
+  width: 36px;
+  height: 36px;
+  border-radius: 50% !important;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: all 0.2s;
+}
+
+.icon-button:hover {
+  background: rgba(255, 80, 80, 0.1) !important;
+  color: #ff5050 !important;
+}
+
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.qr-modal-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 30px;
+  justify-content: center;
+}
+
 /* Modals */
 dialog, .modal {
   background: transparent !important;
@@ -423,12 +471,21 @@ dialog, .modal {
   color: #fff !important;
 }
 
-.modal article {
+/* Target only the direct article child of dialog to avoid styling nested articles like qr-card */
+dialog.modal > article {
   background: #121214 !important;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
   border-radius: 28px !important;
   padding: 40px !important;
   color: #fff !important;
+  position: relative;
+  max-width: 90vw;
+  width: 500px;
+}
+
+.qr-modal > article {
+  width: auto !important;
+  max-width: 95vw !important;
 }
 
 .field-label input, .field-label textarea {
