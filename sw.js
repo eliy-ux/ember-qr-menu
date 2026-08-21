@@ -1,15 +1,15 @@
-const CACHE_NAME = "yoni-burger-v99-stealth-creative";
+const CACHE_NAME = "yoni-burger-v100-perfect-x";
 const ASSETS = [
   "./",
   "./index.html",
   "./admin.html",
-  "./assets/css/style.css?v=yoni-speed-99",
-  "./assets/css/admin.css?v=yoni-speed-99",
-  "./assets/css/customer-redesign.css?v=yoni-speed-99",
-  "./assets/js/app.js?v=yoni-speed-99",
-  "./assets/js/admin.js?v=yoni-speed-99",
+  "./assets/css/style.css?v=yoni-speed-100",
+  "./assets/css/admin.css?v=yoni-speed-100",
+  "./assets/css/customer-redesign.css?v=yoni-speed-100",
+  "./assets/js/app.js?v=yoni-speed-100",
+  "./assets/js/admin.js?v=yoni-speed-100",
   "./assets/js/utils.js",
-  "./assets/icons/yoni.svg?v=99"
+  "./assets/icons/yoni.svg?v=100"
 ];
 
 self.addEventListener("install", event => {
