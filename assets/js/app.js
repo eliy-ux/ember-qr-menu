@@ -1,10 +1,10 @@
 import { signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-import { createOrder, createServiceRequest, watchOrder, watchMenu, saveRating } from "./firestore.js?v=yoni-speed-73";
+import { createOrder, createServiceRequest, watchOrder, watchMenu, saveRating } from "./firestore.js?v=yoni-speed-91";
 import { fallbackMenu, money, escapeHtml } from "./utils.js";
-import { auth } from "./firebase.js?v=yoni-speed-73";
+import { auth } from "./firebase.js?v=yoni-speed-91";
 
 const $ = selector => document.querySelector(selector);
-const state = {menu:fallbackMenu, category:"All", search:"", language:localStorage.getItem("ember-language") || "en", cart:JSON.parse(localStorage.getItem("ember-cart") || "[]"), orderUnsubscribe:null, activeOrderId:null, lastOrderStatus:null, installPrompt:null};
+const state = {menu:[], category:"All", search:"", language:localStorage.getItem("ember-language") || "en", cart:JSON.parse(localStorage.getItem("ember-cart") || "[]"), orderUnsubscribe:null, activeOrderId:null, lastOrderStatus:null, installPrompt:null};
 const deviceStorageKey = "ember-device-id";
 const debugLog = (...args) => console.info("[YONI]", ...args);
 const getDeviceId = () => {
@@ -101,6 +101,7 @@ const translations = {
 const t = key => translations[state.language]?.[key] || translations.en[key] || key;
 
 function renderMenu(){ 
+  if (state.menu.length === 0 && $("#menuContainer").querySelector(".skeleton-card")) return;
   const term=state.search.trim().toLowerCase(); 
   const items=state.menu.filter(i => !i.outOfStock && (state.category==="All"||i.category===state.category) && (`${i.name} ${i.description}`).toLowerCase().includes(term)); 
   $("#menuContainer").innerHTML=items.length?items.map(item=>{
@@ -449,6 +450,6 @@ debugLog("Customer app ready", {deviceId:getDeviceId(), notificationPermission:t
 
 const tableFromQr=new URLSearchParams(window.location.search).get("table");
 if(tableFromQr){$("#tableNumber").value=tableFromQr;toast(`Welcome! You're ordering for table ${tableFromQr}.`);}
-watchMenu(items=>{state.menu=items;if(state.category!=="All"&&!items.some(i=>i.category===state.category))state.category="All";renderCategories();renderMenu();},error=>console.error("Live menu unavailable, using fallback menu.",error));
+watchMenu(items=>{state.menu=items;if(state.category!=="All"&&!items.some(i=>i.category===state.category))state.category="All";renderCategories();renderMenu();},error=>{console.error("Live menu unavailable, using fallback menu.",error); state.menu=fallbackMenu; renderCategories(); renderMenu();});
 const savedOrderId = localStorage.getItem("ember-active-order");
 if(savedOrderId) watchCustomerOrder(savedOrderId);
