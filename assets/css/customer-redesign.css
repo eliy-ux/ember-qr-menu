@@ -97,6 +97,20 @@ body.cart-open .site-header {
   overflow: hidden;
   transform: rotate(-2deg);
   border: 1px solid rgba(255, 255, 255, 0.1);
+  /* Stealth Monogram Cutout Effect */
+  mask-image: url('../icons/yoni.svg?v=99');
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-image: url('../icons/yoni.svg?v=99');
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+}
+
+/* Hide the text since the mask handles the Y shape */
+.logo-circle {
+  color: transparent !important;
 }
 
 .logo-circle::before {
