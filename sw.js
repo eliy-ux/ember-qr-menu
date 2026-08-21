@@ -1,13 +1,13 @@
-const CACHE_NAME = "yoni-burger-v92-hyper";
+const CACHE_NAME = "yoni-burger-v93-final";
 const ASSETS = [
   "./",
   "./index.html",
   "./admin.html",
-  "./assets/css/style.css?v=yoni-speed-92",
-  "./assets/css/admin.css?v=yoni-speed-92",
-  "./assets/css/customer-redesign.css?v=yoni-speed-92",
-  "./assets/js/app.js?v=yoni-speed-92",
-  "./assets/js/admin.js?v=yoni-speed-92",
+  "./assets/css/style.css?v=yoni-speed-93",
+  "./assets/css/admin.css?v=yoni-speed-93",
+  "./assets/css/customer-redesign.css?v=yoni-speed-93",
+  "./assets/js/app.js?v=yoni-speed-93",
+  "./assets/js/admin.js?v=yoni-speed-93",
   "./assets/js/utils.js",
   "./assets/icons/yoni.svg"
 ];
@@ -36,6 +36,20 @@ self.addEventListener("fetch", event => {
     return;
   }
 
+  // NETWORK-FIRST for HTML files to prevent "Ghost" content flash
+  if (event.request.mode === "navigate" || url.pathname.endsWith(".html") || url.pathname === "/") {
+    event.respondWith(
+      fetch(event.request)
+        .then(response => {
+          const copy = response.clone();
+          caches.open(CACHE_NAME).then(cache => cache.put(event.request, copy));
+          return response;
+        })
+        .catch(() => caches.match(event.request))
+    );
+    return;
+  }
+
   // Cache-First for Images and Fonts
   if (event.request.destination === "image" || event.request.destination === "font") {
     event.respondWith(
@@ -50,7 +64,7 @@ self.addEventListener("fetch", event => {
     return;
   }
 
-  // Stale-While-Revalidate for everything else (HTML, JS, CSS)
+  // Stale-While-Revalidate for JS and CSS
   event.respondWith(
     caches.match(event.request).then(cached => {
       const networked = fetch(event.request).then(response => {
