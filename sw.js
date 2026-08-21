@@ -1,13 +1,13 @@
-const CACHE_NAME = "yoni-burger-v91-showcase";
+const CACHE_NAME = "yoni-burger-v92-hyper";
 const ASSETS = [
   "./",
   "./index.html",
   "./admin.html",
-  "./assets/css/style.css?v=yoni-speed-91",
-  "./assets/css/admin.css?v=yoni-speed-91",
-  "./assets/css/customer-redesign.css?v=yoni-speed-91",
-  "./assets/js/app.js?v=yoni-speed-91",
-  "./assets/js/admin.js?v=yoni-speed-91",
+  "./assets/css/style.css?v=yoni-speed-92",
+  "./assets/css/admin.css?v=yoni-speed-92",
+  "./assets/css/customer-redesign.css?v=yoni-speed-92",
+  "./assets/js/app.js?v=yoni-speed-92",
+  "./assets/js/admin.js?v=yoni-speed-92",
   "./assets/js/utils.js",
   "./assets/icons/yoni.svg"
 ];
@@ -29,18 +29,37 @@ self.addEventListener("activate", event => {
 });
 
 self.addEventListener("fetch", event => {
-  // Skip cross-origin and Firebase requests to avoid issues
-  if (!event.request.url.startsWith(self.location.origin) || event.request.url.includes("firestore") || event.request.url.includes("firebase")) {
+  const url = new URL(event.request.url);
+  
+  // Skip cross-origin and Firebase/Firestore requests
+  if (!url.origin.includes(self.location.origin) || url.pathname.includes("firestore") || url.pathname.includes("firebase")) {
     return;
   }
 
+  // Cache-First for Images and Fonts
+  if (event.request.destination === "image" || event.request.destination === "font") {
+    event.respondWith(
+      caches.match(event.request).then(cached => {
+        return cached || fetch(event.request).then(response => {
+          const copy = response.clone();
+          caches.open(CACHE_NAME).then(cache => cache.put(event.request, copy));
+          return response;
+        });
+      })
+    );
+    return;
+  }
+
+  // Stale-While-Revalidate for everything else (HTML, JS, CSS)
   event.respondWith(
-    fetch(event.request)
-      .then(response => {
+    caches.match(event.request).then(cached => {
+      const networked = fetch(event.request).then(response => {
         const copy = response.clone();
         caches.open(CACHE_NAME).then(cache => cache.put(event.request, copy));
         return response;
-      })
-      .catch(() => caches.match(event.request))
+      }).catch(() => cached);
+      
+      return cached || networked;
+    })
   );
 });
