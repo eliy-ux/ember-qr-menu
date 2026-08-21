@@ -97,12 +97,12 @@
   border-radius: 28% !important;
   display: grid;
   place-items: center;
-  font-family: "Playfair Display", serif;
+  font-family: "DM Sans", sans-serif;
   font-size: 1.8rem;
-  font-weight: 900;
+  font-weight: 800;
   color: #fff !important;
   box-shadow: 0 4px 20px rgba(255, 102, 0, 0.58);
-  transform: rotate(-4deg);
+  transform: rotate(-2deg);
 }
 
 .sidebar-eyebrow {
@@ -905,11 +905,11 @@ dialog.modal > article {
   border-radius: 28%;
   display: grid;
   place-items: center;
-  font-family: "Playfair Display", serif;
+  font-family: "DM Sans", sans-serif;
   font-size: 2.2rem;
-  font-weight: 900;
+  font-weight: 800;
   color: #fff;
-  transform: rotate(-4deg);
+  transform: rotate(-2deg);
   box-shadow: 0 6px 15px rgba(255, 102, 0, 0.3);
 }
 

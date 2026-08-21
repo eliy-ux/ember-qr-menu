@@ -1,13 +1,13 @@
-const CACHE_NAME = "yoni-burger-v97-squircle";
+const CACHE_NAME = "yoni-burger-v98-architectural";
 const ASSETS = [
   "./",
   "./index.html",
   "./admin.html",
-  "./assets/css/style.css?v=yoni-speed-97",
-  "./assets/css/admin.css?v=yoni-speed-97",
-  "./assets/css/customer-redesign.css?v=yoni-speed-97",
-  "./assets/js/app.js?v=yoni-speed-97",
-  "./assets/js/admin.js?v=yoni-speed-97",
+  "./assets/css/style.css?v=yoni-speed-98",
+  "./assets/css/admin.css?v=yoni-speed-98",
+  "./assets/css/customer-redesign.css?v=yoni-speed-98",
+  "./assets/js/app.js?v=yoni-speed-98",
+  "./assets/js/admin.js?v=yoni-speed-98",
   "./assets/js/utils.js",
   "./assets/icons/yoni.svg"
 ];
