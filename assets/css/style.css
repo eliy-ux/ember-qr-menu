@@ -111,3 +111,47 @@ a, button, input, textarea, [role="button"] { -webkit-tap-highlight-color: trans
     transform: translateX(100%);
   }
 }
+
+/* Luxury Splash Screen */
+.splash-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #050505;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.6s;
+}
+
+.splash-screen.fade-out {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.splash-screen .cyber-logo {
+  width: 100px;
+  height: 100px;
+  animation: splash-pulse 2s infinite ease-in-out;
+}
+
+.splash-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  letter-spacing: 0.2em;
+  color: #fff;
+  opacity: 0.8;
+  animation: splash-text-fade 2s infinite alternate;
+}
+
+@keyframes splash-pulse {
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 20px rgba(255, 102, 0, 0.4)); }
+  50% { transform: scale(1.05); filter: drop-shadow(0 0 40px rgba(255, 102, 0, 0.7)); }
+}
+
+@keyframes splash-text-fade {
+  from { opacity: 0.4; transform: translateY(5px); }
+  to { opacity: 0.9; transform: translateY(0); }
+}

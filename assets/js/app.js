@@ -1,10 +1,10 @@
 import { signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-import { createOrder, createServiceRequest, watchOrder, watchMenu, saveRating } from "./firestore.js?v=yoni-speed-93";
+import { createOrder, createServiceRequest, watchOrder, watchMenu, saveRating } from "./firestore.js?v=yoni-speed-94";
 import { fallbackMenu, money, escapeHtml } from "./utils.js";
-import { auth } from "./firebase.js?v=yoni-speed-93";
+import { auth } from "./firebase.js?v=yoni-speed-94";
 
 const $ = selector => document.querySelector(selector);
-const state = {menu:fallbackMenu, category:"All", search:"", language:localStorage.getItem("ember-language") || "en", cart:JSON.parse(localStorage.getItem("ember-cart") || "[]"), orderUnsubscribe:null, activeOrderId:null, lastOrderStatus:null, installPrompt:null};
+const state = {menu:[], category:"All", search:"", language:localStorage.getItem("ember-language") || "en", cart:JSON.parse(localStorage.getItem("ember-cart") || "[]"), orderUnsubscribe:null, activeOrderId:null, lastOrderStatus:null, installPrompt:null};
 const deviceStorageKey = "ember-device-id";
 const debugLog = (...args) => console.info("[YONI]", ...args);
 const getDeviceId = () => {
@@ -103,6 +103,14 @@ const t = key => translations[state.language]?.[key] || translations.en[key] || 
 function renderMenu(){ 
   const term=state.search.trim().toLowerCase(); 
   const items=state.menu.filter(i => !i.outOfStock && (state.category==="All"||i.category===state.category) && (`${i.name} ${i.description}`).toLowerCase().includes(term)); 
+  
+  if (items.length > 0 || state.menu.length > 0) {
+    const splash = $("#splashScreen");
+    if (splash && !splash.classList.contains("fade-out")) {
+      setTimeout(() => splash.classList.add("fade-out"), 300);
+    }
+  }
+
   $("#menuContainer").innerHTML=items.length?items.map(item=>{
     const isPopular = ["doro-wat", "beyaynetu", "kitfo"].includes(item.id);
     return `<article class="food-card">

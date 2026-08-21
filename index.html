@@ -14,16 +14,23 @@
   <noscript>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
   </noscript>
-  <link rel="stylesheet" href="assets/css/style.css?v=yoni-speed-93">
-  <link rel="stylesheet" href="assets/css/animations.css?v=yoni-speed-93">
-  <link rel="stylesheet" href="assets/css/responsive.css?v=yoni-speed-93">
+  <link rel="stylesheet" href="assets/css/style.css?v=yoni-speed-94">
+  <link rel="stylesheet" href="assets/css/animations.css?v=yoni-speed-94">
+  <link rel="stylesheet" href="assets/css/responsive.css?v=yoni-speed-94">
   <link rel="manifest" href="manifest.webmanifest">
-  <link rel="icon" href="assets/icons/yoni.svg?v=93" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="assets/icons/yoni.svg?v=93">
-  <link rel="stylesheet" href="assets/css/customer-redesign.css?v=yoni-speed-93">
+  <link rel="icon" href="assets/icons/yoni.svg?v=94" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/icons/yoni.svg?v=94">
+  <link rel="stylesheet" href="assets/css/customer-redesign.css?v=yoni-speed-94">
 </head>
 
 <body>
+  <div id="splashScreen" class="splash-screen">
+    <div class="cyber-logo">
+      <div class="logo-circle">Y</div>
+    </div>
+    <div class="splash-text">YONI BURGER</div>
+  </div>
+
   <div class="page-shell">
     <header class="site-header container">
       <a class="brand" href="#top" aria-label="Yoni Burger home">
@@ -80,66 +87,10 @@
         </div>
         <div class="categories" id="categoryList" aria-label="Menu categories"></div>
         <div class="menu-grid" id="menuContainer" aria-live="polite">
-          <!-- Static Hydration: Top 4 Burgers appear instantly -->
-          <article class="food-card">
-            <div class="food-image">
-              <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=70" alt="Classic Yoni Burger">
-            </div>
-            <div class="food-info">
-              <span class="badge badge-popular">Popular</span>
-              <h3>Classic Yoni Burger</h3>
-              <div class="name-am">ክላሲክ ዮኒ በርገር</div>
-              <p>Premium beef patty, house-made Yoni sauce, aged cheddar, and caramelized onions.</p>
-              <div class="card-bottom">
-                <span class="price">Br 850.00</span>
-                <button class="add-button">+</button>
-              </div>
-            </div>
-          </article>
-          <article class="food-card">
-            <div class="food-image">
-              <img src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?auto=format&fit=crop&w=600&q=70" alt="Double Cheese Overload">
-            </div>
-            <div class="food-info">
-              <h3>Double Cheese Overload</h3>
-              <div class="name-am">ደብል ቺዝ በርገር</div>
-              <p>Two 150g beef patties, triple cheddar, pickles, and smoky mustard.</p>
-              <div class="card-bottom">
-                <span class="price">Br 1,100.00</span>
-                <button class="add-button">+</button>
-              </div>
-            </div>
-          </article>
-          <article class="food-card">
-            <div class="food-image">
-              <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=600&q=70" alt="Spicy Ethiopian Twist">
-            </div>
-            <div class="food-info">
-              <span class="badge badge-popular">Spicy</span>
-              <h3>Spicy Ethiopian Twist</h3>
-              <div class="name-am">ስፓይሲ ኢትዮጵያን ትዊስት</div>
-              <p>Beef patty infused with berbere spices, jalapeños, and a cool yogurt-lime sauce.</p>
-              <div class="card-bottom">
-                <span class="price">Br 920.00</span>
-                <button class="add-button">+</button>
-              </div>
-            </div>
-          </article>
-          <article class="food-card">
-            <div class="food-image">
-              <img src="https://images.unsplash.com/photo-1596662951482-0c4ba74a6df6?auto=format&fit=crop&w=600&q=70" alt="Truffle Luxury Burger">
-            </div>
-            <div class="food-info">
-              <span class="badge badge-popular">Popular</span>
-              <h3>Truffle Luxury Burger</h3>
-              <div class="name-am">ትረፍል ላክዠሪ በርገር</div>
-              <p>Black truffle mayo, sautéed wild mushrooms, and swiss cheese.</p>
-              <div class="card-bottom">
-                <span class="price">Br 1,350.00</span>
-                <button class="add-button">+</button>
-              </div>
-            </div>
-          </article>
+          <div class="skeleton-card"></div>
+          <div class="skeleton-card"></div>
+          <div class="skeleton-card"></div>
+          <div class="skeleton-card"></div>
         </div>
       </section>
     </main>
@@ -273,7 +224,7 @@
   </dialog>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <script type="module" src="assets/js/app.js?v=yoni-speed-93"></script>
+  <script type="module" src="assets/js/app.js?v=yoni-speed-94"></script>
 </body>
 
 </html>
