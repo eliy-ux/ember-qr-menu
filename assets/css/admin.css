@@ -94,7 +94,7 @@
   width: 44px;
   height: 44px;
   background: linear-gradient(135deg, #ff8a3d 0%, #ff6600 100%) !important;
-  border-radius: 50% !important;
+  border-radius: 28% !important;
   display: grid;
   place-items: center;
   font-family: "Playfair Display", serif;
@@ -902,7 +902,7 @@ dialog.modal > article {
   width: 54px;
   height: 54px;
   background: linear-gradient(135deg, #ff8a3d 0%, #ff6600 100%);
-  border-radius: 50%;
+  border-radius: 28%;
   display: grid;
   place-items: center;
   font-family: "Playfair Display", serif;
